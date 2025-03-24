@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{6d41d281-60c2-49de-bb49-ea11a5c70f66}</ProjectGuid>
-    <RootNamespace>PlaneProject</RootNamespace>
+    <ProjectGuid>{cac50c75-14e4-4a84-9d48-5c3dcd2a700b}</ProjectGuid>
+    <RootNamespace>PlaneProjectClient</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,13 +127,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="GroundTower.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Aircraft.h" />
-    <ClInclude Include="GroundTower.h" />
-    <ClInclude Include="ServerHeader.h" />
+    <ClInclude Include="ClientHeader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
