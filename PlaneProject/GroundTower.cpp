@@ -172,42 +172,60 @@ namespace PlaneSystem {
 		const size_t bufferSize = 1024;     // Buffer size for incoming data
         char buffer[bufferSize] = { 0 };
 
-        // Receive data from aircraft
-        int bytesReceived = recv(clientSocket, buffer, bufferSize - 1, 0);
+        while (m_isListening) {
+            // Clear buffer before receiving
+            std::memset(buffer, 0, bufferSize);
 
-        if (bytesReceived > 0) {
-            buffer[bytesReceived] = '\0'; // Null-terminate the received data
-            std::cout << "Received from aircraft: " << buffer << "\n";
+            // Receive data from aircraft
+            int bytesReceived = recv(clientSocket, buffer, bufferSize - 1, 0);
 
-            // Parse message
-            std::string message(buffer);
-            Aircraft aircraft = parseAircraftMessage(message);
+            if (bytesReceived > 0) {
+                buffer[bytesReceived] = '\0'; // Null-terminate the received data
+                std::cout << "Received from aircraft: " << buffer << "\n";
 
-            // Check if the aircraft is already registered
-            bool aircraftFound = false;
-            {
-                std::lock_guard<std::mutex> lock(m_aircraftMutex);
+                // Parse message
+                std::string message(buffer);
+                Aircraft aircraft = parseAircraftMessage(message);
 
-                for (const auto& existingAircraft : m_aircraftList) {
-                    if (existingAircraft.GetAircraftID() == aircraft.GetAircraftID()) {
-                        aircraftFound = true;
-                        break;
+                // Check if the aircraft is already registered
+                bool aircraftFound = false;
+                {
+                    std::lock_guard<std::mutex> lock(m_aircraftMutex);
+
+                    for (const auto& existingAircraft : m_aircraftList) {
+                        if (existingAircraft.GetAircraftID() == aircraft.GetAircraftID()) {
+                            aircraftFound = true;
+                            break;
+                        }
                     }
                 }
-            }
 
-			// Register or update aircraft if already registered
-            if (!aircraftFound) {
-                RegisterAircraft(aircraft);
+                // Register or update aircraft if already registered
+                if (!aircraftFound) {
+                    RegisterAircraft(aircraft);
+                }
+                else {
+                    UpdateAircraft(aircraft);
+                }
+
+                // Send response to the aircraft
+                std::string response = "Message received by " + m_towerName + " ground tower!";
+                if (send(clientSocket, response.c_str(), static_cast<int>(response.length()), 0) == SOCKET_ERROR) {
+                    std::cerr << "Error sending response: " << WSAGetLastError() << "\n";
+                    break;
+                }
+            }
+            else if (bytesReceived == 0) {
+                // Connection closed by the client
+                std::cout << "Connection closed by aircraft.\n";
+                break;
             }
             else {
-                UpdateAircraft(aircraft);
+                // Error in receiving data
+                std::cerr << "Error receiving data: " << WSAGetLastError() << "\n";
+                break;
             }
         }
-
-        // Send response to the aircraft
-        std::string response = "Message received by " + m_towerName + " ground tower!";
-        send(clientSocket, response.c_str(), static_cast<int>(response.length()), 0);
 
         closesocket(clientSocket);
     }

@@ -1,69 +1,207 @@
+#include "Aircraft.h"
 #include "ClientHeader.h"
 #include <iostream>
-#include <cstring>  /
-#include <string>   
+#include <thread>
+#include <chrono>
+#include <string>
+#include <random>
+#include <mutex>
+#include <atomic>
+#include <cstdlib>
 
-#define PORT 8080
+constexpr uint16_t PORT = 8080;
+constexpr const char* SERVER_IP = "127.0.0.1";
+constexpr size_t BUFFER_SIZE = 1024;
+constexpr double FUEL_CONSUMPTION_RATE = 0.5;
+constexpr std::chrono::seconds DATA_SEND_INTERVAL(5);
 
-int main() {
+using namespace PlaneSystem;
+
+std::atomic<bool> g_keepRunning{ true };
+std::mutex g_aircraftMutex;
+
+enum class ErrorCode {
+    SUCCESS = 0,
+    WINSOCK_INIT_FAILED,
+    SOCKET_CREATION_FAILED,
+    CONNECTION_FAILED,
+    SEND_FAILED,
+    RECEIVE_FAILED
+};
+
+// Function to send aircraft data
+void sendAircraftData(SOCKET socket, Aircraft& aircraft) {
+    while (g_keepRunning) {
+        // Update of aircraft state
+        {
+            std::lock_guard<std::mutex> lock(g_aircraftMutex);
+
+            double currentFuel = aircraft.GetFuelLevel();
+            currentFuel -= FUEL_CONSUMPTION_RATE;
+            aircraft.SetFuelLevel(currentFuel < 0.0 ? 0.0 : currentFuel);
+        }
+
+        // Construct message as comma-separated values
+        std::string message;
+        {
+            std::lock_guard<std::mutex> lock(g_aircraftMutex);
+
+            message = aircraft.GetAircraftID() + "," +
+                std::to_string(aircraft.GetLatitude()) + "," +
+                std::to_string(aircraft.GetLongitude()) + "," +
+                std::to_string(aircraft.GetAltitude()) + "," +
+                std::to_string(aircraft.GetSpeed()) + "," +
+                std::to_string(aircraft.GetFuelLevel());
+        }
+
+        // Send data
+        if (send(socket, message.c_str(), static_cast<int>(message.length()), 0) == SOCKET_ERROR) {
+            std::cerr << "Error sending data: " << WSAGetLastError() << std::endl;
+            g_keepRunning = false;
+            break;
+        }
+        std::cout << "Sent: " << message << std::endl;
+
+        // Sleep between updates
+        std::this_thread::sleep_for(DATA_SEND_INTERVAL);
+    }
+}
+
+// Function to receive messages from the server
+void receiveServerMessages(SOCKET socket) {
+    char buffer[BUFFER_SIZE];
+    while (g_keepRunning) 
+    {
+        // Clear buffer before receiving new data
+        std::memset(buffer, 0, BUFFER_SIZE);
+
+        int bytesReceived = recv(socket, buffer, BUFFER_SIZE - 1, 0);
+        if (bytesReceived > 0) {
+            buffer[bytesReceived] = '\0';   // Null-terminate the received data
+            std::cout << "Server: " << buffer << std::endl;
+        }
+        else if (bytesReceived == 0) {
+            std::cout << "Connection closed by server" << std::endl;
+            g_keepRunning = false;
+            break;
+        }
+        else {
+            std::cerr << "Error receiving data: " << WSAGetLastError() << std::endl;
+            g_keepRunning = false;
+            break;
+        }
+    }
+}
+
+// Function to generate a random aircraft ID
+std::string generateAircraftID() {
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> dis(1000, 9999);
+
+    return "Aircraft-" + std::to_string(dis(gen));
+}
+
+// Clean up socket resources
+void cleanupSocket(SOCKET& socket) {
+    if (socket != INVALID_SOCKET) {
+        closesocket(socket);
+        socket = INVALID_SOCKET;
+    }
+}
+
+int main(int argc, char* argv[]) {
     WSADATA wsaData;
-    int iResult = WSAStartup(MAKEWORD(2, 2), &wsaData);
-    if (iResult != 0) {
-        std::cerr << "WSAStartup failed: " << iResult << std::endl;
-        return 1;
-    }
+    SOCKET clientSocket = INVALID_SOCKET;
+    sockaddr_in serverAddr{};
 
-    SOCKET sock = socket(AF_INET, SOCK_STREAM, 0);
-    if (sock == INVALID_SOCKET) {
-        std::cerr << "Socket creation error: " << WSAGetLastError() << std::endl;
-        WSACleanup();
-        return 1;
-    }
-
-    sockaddr_in serv_addr{};
-    serv_addr.sin_family = AF_INET;
-    serv_addr.sin_port = htons(PORT);
-    inet_pton(AF_INET, "127.0.0.1", &serv_addr.sin_addr);
-
-    if (connect(sock, (sockaddr*)&serv_addr, sizeof(serv_addr)) == SOCKET_ERROR) {
-        std::cerr << "Connection failed: " << WSAGetLastError() << std::endl;
-        closesocket(sock);
-        WSACleanup();
-        return 1;
-    }
-
-    // Example: Aircraft data (no class, just raw data)
-    std::string aircraftID = "Aircraft1";
-    double latitude = 40.7128;
-    double longitude = -74.0060;
-    double altitude = 10000;
-    double speed = 800;
-    double fuelLevel = 50;
-
-    // Construct message as a comma-separated string
-    std::string message = aircraftID + "," +
-        std::to_string(latitude) + "," +
-        std::to_string(longitude) + "," +
-        std::to_string(altitude) + "," +
-        std::to_string(speed) + "," +
-        std::to_string(fuelLevel);
-
-    // Send aircraft data to the server
-    send(sock, message.c_str(), message.length(), 0);
-    std::cout << "Aircraft data sent: " << message << std::endl;
-
-    char buffer[1024] = { 0 };
-    int bytesReceived = recv(sock, buffer, 1024, 0);
-    if (bytesReceived > 0) {
-        buffer[bytesReceived] = '\0';  // Null-terminate the received data
-        std::cout << "Server response: " << buffer << std::endl;
+    // Parse command arguments for aircraft ID
+    std::string aircraftID;
+    if (argc > 1) {
+        aircraftID = argv[1];
     }
     else {
-        std::cerr << "Failed to receive response from server" << std::endl;
+        aircraftID = generateAircraftID();
     }
 
-    closesocket(sock);
-    WSACleanup();
+    // Initialize Winsock
+    if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) {
+        std::cerr << "WSAStartup failed with error: " << WSAGetLastError() << std::endl;
+        return static_cast<int>(ErrorCode::WINSOCK_INIT_FAILED);
+    }
 
-    return 0;
+    // Generate randomized starting position
+    std::random_device rd;
+    std::mt19937 gen(rd());
+
+    std::uniform_real_distribution<> latDist(-90.0000, 90.0000);
+    std::uniform_real_distribution<> lonDist(-90.0000, 90.0000);
+    std::uniform_real_distribution<> altDist(9000.0, 11000.0);
+    std::uniform_real_distribution<> spdDist(750.0, 850.0);
+
+    // Create aircraft object with safe initialization
+    Aircraft aircraft(
+        aircraftID,
+        latDist(gen),
+        lonDist(gen),
+        altDist(gen),
+        spdDist(gen),
+        100.0  // Full fuel
+    );
+
+    std::cout << "Aircraft " << aircraft.GetAircraftID() << " initialized." << std::endl;
+    std::cout << "Position: (" << aircraft.GetLatitude() << ", " << aircraft.GetLongitude() << ")" << std::endl;
+    std::cout << "Altitude: " << aircraft.GetAltitude() << " meters" << std::endl;
+    std::cout << "Speed: " << aircraft.GetSpeed() << " km/h" << std::endl;
+
+    while (true) {
+        g_keepRunning = true;
+
+        // Create socket with error checking
+        clientSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+        if (clientSocket == INVALID_SOCKET) {
+            std::cerr << "Socket creation failed: " << WSAGetLastError() << "\n";
+            WSACleanup();
+            return static_cast<int>(ErrorCode::SOCKET_CREATION_FAILED);
+        }
+
+        serverAddr.sin_family = AF_INET;
+        serverAddr.sin_port = htons(PORT);
+        inet_pton(AF_INET, SERVER_IP, &serverAddr.sin_addr);
+
+        // Attempt connection 
+        std::cout << "Attempting to connect to ground control tower..." << std::endl;
+
+        if (connect(clientSocket, reinterpret_cast<sockaddr*>(&serverAddr), sizeof(serverAddr)) == SOCKET_ERROR) {
+            std::cerr << "Connection failed with error: " << WSAGetLastError() << std::endl;
+            cleanupSocket(clientSocket);
+            std::cout << "Retrying in 3 seconds..." << std::endl;
+            std::this_thread::sleep_for(std::chrono::seconds(3));
+            continue;
+        }
+
+        std::cout << "Connected to ground control!" << std::endl;
+
+        // Start sender and receiver threads
+        std::thread sender(sendAircraftData, clientSocket, std::ref(aircraft));
+        std::thread receiver(receiveServerMessages, clientSocket);
+
+        if (sender.joinable()) {
+            sender.join();
+        }
+
+        if (receiver.joinable()) {
+            receiver.join();
+        }
+
+        std::cout << "Disconnected from ground control tower." << std::endl;
+
+        cleanupSocket(clientSocket);
+
+        std::cout << "Reconnecting in 3 seconds..." << std::endl;
+        std::this_thread::sleep_for(std::chrono::seconds(3));
+    }
+
+    WSACleanup();
+    return static_cast<int>(ErrorCode::SUCCESS);
 }
