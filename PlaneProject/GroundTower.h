@@ -1,4 +1,4 @@
-// GroundTower.h
+// GroundTower.h - ground control tower header file
 #ifndef GROUNDTOWER_H
 #define GROUNDTOWER_H
 
@@ -6,45 +6,106 @@
 #include <vector>
 #include <thread>
 #include <winsock2.h> 
-#include "Aircraft.h" // Include the Aircraft class
+#include "Aircraft.h"
 #include <iostream>
 #include <cstring> 
+#include <mutex>
+#include <atomic>
+#include <sstream>
+#include <algorithm>
+#include <iomanip>
 
-using namespace std;
+namespace PlaneSystem {
 
-class GroundTower {
-private:
-    string towerName; // Tower's name
-    double latitude; // Tower's latitude
-    double longitude; // Tower's longitude
-    vector<Aircraft> aircraftList; // List of aircrafts connected to the tower
-    double operationalRadius; // in kilometers
-    SOCKET server_fd; // Server socket
+    /**
+    * @class GroundTower
+	* @brief Represents a ground control tower that communicates with aircraft (client)
+    */
+    class GroundTower {
+    private:
+        std::string m_towerName;                        /**< Tower's name */
+        double m_latitude;                              /**< Tower's latitude */
+        double m_longitude;                             /**< Tower's longitude */
+        double m_operationalRadius;                     /**< Tower's operational radius in kilometers */
 
-    // Method to start listening for aircraft
-    void listenForAircraft();
+        mutable std::mutex m_aircraftMutex;             /**< Mutex to protect the aircraft list */
+        std::vector<Aircraft> m_aircraftList;           /**< List of aircrafts connected to the tower */
+        SOCKET m_server_fd;                             /**< Server Socket for accepting connections */
 
-    // Helper method to handle aircraft communication
-    void handleAircraftCommunication(SOCKET client_socket);
+		std::atomic<bool> m_isListening;                /**< Flag to indicate if the tower is listening for aircraft */
+		std::unique_ptr<std::thread> m_listenerThread;  /**< Thread to listen for aircraft connections */
 
-public:
-    // Constructor
-    GroundTower(const string& name, double lat, double lon, double radius);
+        /**
+		* @brief Listen for new aircraft (client) connections 
+        */
+        void listenForAircraft();
 
-    // Destructor to clean up resources
-    ~GroundTower();
+        /**
+        * @breif Handle communication with a connected aircraft (client) 
+		* @param clientSocket Socket for the connected aircraft (client)
+        */
+        void handleAircraftCommunication(SOCKET clientSocket);
 
-    // Register an aircraft
-    void registerAircraft(const Aircraft& aircraft);
+        /**
+        * @brief Parse a message from the connected aircraft (client)
+        * @param message Message to parse
+        * @return Aircraft object with the parsed data
+        */
+		Aircraft parseAircraftMessage(const std::string& message);
 
-    // Update the aircraft location and metrics
-    void updateAircraft(const Aircraft& aircraft);
+    public:
+        /**
+		* @brief Constructor to initialize the ground control tower
+		* @param name Tower's name
+		* @param lat Tower's latitude
+		* @param lon Tower's longitude
+		* @param radius Tower's operational radius in kilometers
+        */
+        GroundTower(const std::string& name, double lat, double lon, double radius);
 
-    // Display all registered aircraft
-    void displayAllAircraft() const;
+        /**
+		* @brief Destructor to clean up the allocated resources
+        */
+        ~GroundTower();
 
-    // Start listening for aircraft
-    void startListening();
-};
+		// Delete opy constructor and assignment operator 
+		GroundTower(const GroundTower&) = delete;
+		GroundTower& operator=(const GroundTower&) = delete;
+
+        /**
+        * @brief Register an aircraft
+		* @param aircraft Aircraft object to register
+        */
+        void RegisterAircraft(const Aircraft& aircraft);
+
+        /**
+        * @brief Update the aircraft location and metrics
+		* @param aircraft Aircraft object to update
+        */
+        void UpdateAircraft(const Aircraft& aircraft);
+
+        /**
+        * @brief Display all registered aircraft
+        */
+        void DisplayAllAircraft() const;
+
+        /**
+		* @brief Start listening for aircraft connections
+		* @return True if the server started successfully, false otherwise
+        */
+        bool StartListening();
+
+        /**
+		* @brief Stop listening for aircraft connections
+        */
+		void StopListening();
+
+        /**
+        * @brief Check if the tower is currently listening for aircraft connections
+		* @return True if the tower is listening, false otherwise
+        */
+		bool IsListening() const;
+    };
+}
 
 #endif // GROUNDTOWER_H

@@ -2,181 +2,290 @@
 
 #include "GroundTower.h"
 #include "Aircraft.h"
+#include "ServerHeader.h"
 
-using namespace std;
-
-// Constructor
-GroundTower::GroundTower(const string& name, double lat, double lon, double radius)
-    : towerName(name), latitude(lat), longitude(lon), operationalRadius(radius), server_fd(INVALID_SOCKET) {}
-
-// Destructor
-GroundTower::~GroundTower() {
-    if (server_fd != INVALID_SOCKET) {
-        closesocket(server_fd);
-        WSACleanup();
+namespace PlaneSystem {
+    // Constructor
+    GroundTower::GroundTower(const std::string& name, double lat, double lon, double radius)
+        : m_towerName(name),
+        m_latitude(lat),
+        m_longitude(lon),
+        m_operationalRadius(radius),
+        m_server_fd(INVALID_SOCKET),
+        m_isListening(false),
+        m_listenerThread(nullptr)
+    {
     }
-}
 
+    // Destructor
+    GroundTower::~GroundTower() {
+        StopListening();
+    }
 
-// Register an aircraft (Save the object aircraft into the vector list)
-void GroundTower::registerAircraft(const Aircraft& aircraft) {
-    aircraftList.push_back(aircraft);
-    cout << "Aircraft " << aircraft.aircraftID << " registered at " << towerName << " tower.\n";
-}
+    // Register an aircraft
+    void GroundTower::RegisterAircraft(const Aircraft& aircraft) {
+        std::lock_guard<std::mutex> lock(m_aircraftMutex);
 
-// Update an aircraft in the vector list of all aircrafts
-void GroundTower::updateAircraft(const Aircraft& aircraft) {
-    for (auto& existingAircraft : aircraftList) {
-        if (existingAircraft.aircraftID == aircraft.aircraftID) {
-            existingAircraft.latitude = aircraft.latitude;
-            existingAircraft.longitude = aircraft.longitude;
-            existingAircraft.altitude = aircraft.altitude;
-            existingAircraft.speed = aircraft.speed;
-            existingAircraft.fuelLevel = aircraft.fuelLevel;
-            cout << "Updated aircraft " << aircraft.aircraftID << "'s information.\n";
+        //Save the object aircraft into the vector list
+        m_aircraftList.push_back(aircraft);
+        std::cout << "Aircraft " << aircraft.GetAircraftID() << " registered at " << m_towerName << " tower.\n";
+    }
+
+    // Update an aircraft in the vector list of all aircrafts
+    void GroundTower::UpdateAircraft(const Aircraft& aircraft) {
+        std::lock_guard<std::mutex> lock(m_aircraftMutex);
+
+        auto it = std::find_if(m_aircraftList.begin(), m_aircraftList.end(), [&](const Aircraft& existingAircraft) {
+                return existingAircraft.GetAircraftID() == aircraft.GetAircraftID();
+            });
+
+        if (it != m_aircraftList.end()) {
+            *it = aircraft;
+            std::cout << "Updated aircraft " << aircraft.GetAircraftID() << "'s information.\n";
+        }
+        else {
+            std::cout << "Aircraft " << aircraft.GetAircraftID() << " not found!\n";
+        }
+    }
+
+    // Display all information regarding the aircraft vector list
+    void GroundTower::DisplayAllAircraft() const {
+        std::lock_guard<std::mutex> lock(m_aircraftMutex);
+
+        std::cout << "Aircraft under " << m_towerName << " tower:\n";
+        for (const auto& aircraft : m_aircraftList) {
+            std::cout << " - Aircraft ID: " << aircraft.GetAircraftID()
+                << " | Location: (" << std::fixed << std::setprecision(6) << aircraft.GetLatitude() << ", " << aircraft.GetLongitude() << ")"
+                << " | Altitude: " << aircraft.GetAltitude() << " meters"
+                << " | Speed: " << aircraft.GetSpeed() << " km/h"
+                << " | Fuel Level: " << aircraft.GetFuelLevel() << "%\n";
+        }
+    }
+
+    // Start listening for aircraft connections
+    bool GroundTower::StartListening() {
+        if (m_isListening) {
+            std::cout << "Tower " << m_towerName << " is already listening.\n";
+            return true;
+        }
+
+        // Initialize socket
+        if (InitializeSocket() != SocketStatus::Success) {
+            std::cerr << "Failed to initialize Winsock.\n";
+            return false;
+        }
+
+        // Create socket
+        m_server_fd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+        if (m_server_fd == INVALID_SOCKET) {
+            std::cerr << "Socket creation failed: " << WSAGetLastError() << "\n";
+            CleanupSocket();
+            return false;
+        }
+
+        // Start listening on a separate thread
+        m_isListening = true;
+        m_listenerThread = std::make_unique<std::thread>(&GroundTower::listenForAircraft, this);
+
+        return true;
+    }
+
+    // Stop listening for aircraft connections
+    void GroundTower::StopListening() {
+        if (!m_isListening) {
             return;
         }
-    }
-    cout << "Aircraft " << aircraft.aircraftID << " not found!\n";
-}
 
-// Display all information regarding the aircraft vector list
-void GroundTower::displayAllAircraft() const {
-    cout << "Aircraft under " << towerName << " tower:\n";
-    for (const auto& aircraft : aircraftList) {
-        cout << " - Aircraft ID: " << aircraft.aircraftID
-            << " | Location: (" << aircraft.latitude << ", " << aircraft.longitude << ")"
-            << " | Altitude: " << aircraft.altitude << " meters"
-            << " | Speed: " << aircraft.speed << " km/h"
-            << " | Fuel Level: " << aircraft.fuelLevel << "%\n";
-    }
-}
+        m_isListening = false;
 
+        if (m_server_fd != INVALID_SOCKET) {
+            closesocket(m_server_fd);
+            m_server_fd = INVALID_SOCKET;
+        }
 
-// Listen for new connections to the socket
-void GroundTower::listenForAircraft() {
-    sockaddr_in address;
-    address.sin_family = AF_INET;
-    address.sin_addr.s_addr = INADDR_ANY;
-    address.sin_port = htons(8080); // Port Number
+        if (m_listenerThread && m_listenerThread->joinable()) {
+            m_listenerThread->join();
+            m_listenerThread.reset();
+        }
 
-    // Bind the socket
-    if (bind(server_fd, (sockaddr*)&address, sizeof(address)) == SOCKET_ERROR) {
-        cerr << "Bind failed: " << WSAGetLastError() << endl;
-        return;
+        CleanupSocket();
     }
 
-    // Listen for incoming connections
-    if (listen(server_fd, 3) == SOCKET_ERROR) {
-        cerr << "Listen failed: " << WSAGetLastError() << endl;
-        return;
+    // Check if the tower is currently listening
+    bool GroundTower::IsListening() const {
+        return m_isListening;
     }
 
-    cout << "Tower " << towerName << " is now listening for aircraft...\n";
+    // Listen for new aircraft connections
+    void GroundTower::listenForAircraft() {
+        struct sockaddr_in serverAddress;
+        serverAddress.sin_family = AF_INET;
+        serverAddress.sin_addr.s_addr = INADDR_ANY;
+        serverAddress.sin_port = htons(8080); // Port number
 
-    SOCKET client_socket;
-    sockaddr_in client_addr;
-    int addrlen = sizeof(client_addr);
-
-    // Continuously accept new aircraft connections
-    while (true) {
-        client_socket = accept(server_fd, (sockaddr*)&client_addr, &addrlen);
-        if (client_socket == INVALID_SOCKET) {
-            cerr << "Accept failed: " << WSAGetLastError() << endl;
+        // Bind socket
+        if (bind(m_server_fd,
+            reinterpret_cast<struct sockaddr*>(&serverAddress),
+            sizeof(serverAddress)) == SOCKET_ERROR) {
+            std::cerr << "Bind failed: " << WSAGetLastError() << "\n";
+            closesocket(m_server_fd);
+            m_server_fd = INVALID_SOCKET;
+            m_isListening = false;
             return;
         }
 
-        // Handle communication with the connected aircraft
-        thread communicationThread(&GroundTower::handleAircraftCommunication, this, client_socket);
-        communicationThread.detach();  // Detach to handle multiple aircraft concurrently
+        // Listen for incoming connections
+        if (listen(m_server_fd, SOMAXCONN) == SOCKET_ERROR) {
+            std::cerr << "Listen failed: " << WSAGetLastError() << "\n";
+            closesocket(m_server_fd);
+            m_server_fd = INVALID_SOCKET;
+            m_isListening = false;
+            return;
+        }
+
+        std::cout << "Tower " << m_towerName << " is now listening for aircraft...\n";
+
+		// Continuously accept new aircraft connections until stopped
+        while (m_isListening) {
+            struct sockaddr_in clientAddress;
+            int clientAddressSize = sizeof(clientAddress);
+
+            SOCKET clientSocket = accept(m_server_fd, reinterpret_cast<struct sockaddr*>(&clientAddress),&clientAddressSize);
+
+            if (clientSocket == INVALID_SOCKET) {
+				if (m_isListening) { 
+                    std::cerr << "Accept failed: " << WSAGetLastError() << "\n"; } // Error if still listening
+                continue;
+            }
+
+            // Handle communication with the connected aircraft
+            std::thread communicationThread(&GroundTower::handleAircraftCommunication, this, clientSocket);
+            communicationThread.detach();
+        }
     }
-}
 
+    // Handle the data transmissions
+    // Each time it receives the data from the aircraft (client) 
+	// it will parse the data and update the aircraft information or register
+    // if it is a new aircraft 
+    void GroundTower::handleAircraftCommunication(SOCKET clientSocket) {
+		const size_t bufferSize = 1024;     // Buffer size for incoming data
+        char buffer[bufferSize] = { 0 };
 
-// Handle the data transmissions
-void GroundTower::handleAircraftCommunication(SOCKET client_socket) {
-    char buffer[1024] = { 0 };
+        // Receive data from aircraft
+        int bytesReceived = recv(clientSocket, buffer, bufferSize - 1, 0);
 
-    // Receive the message from the aircraft
-    int bytesReceived = recv(client_socket, buffer, sizeof(buffer), 0);
-    if (bytesReceived > 0) {
-        buffer[bytesReceived] = '\0';  // Null-terminate the received data
-        cout << "Received from aircraft: " << buffer << endl;
+        if (bytesReceived > 0) {
+            buffer[bytesReceived] = '\0'; // Null-terminate the received data
+            std::cout << "Received from aircraft: " << buffer << "\n";
 
-        // Parse the message
-        string msg(buffer);
-        size_t pos = 0;
-        string token;
-        string aircraftID;
-        double lat, lon, alt, spd, fuel;
+            // Parse message
+            std::string message(buffer);
+            Aircraft aircraft = parseAircraftMessage(message);
 
-        // Format: "ID,latitude,longitude,altitude,speed,fuel"
-        if ((pos = msg.find(',')) != string::npos) {
-            aircraftID = msg.substr(0, pos);
-            msg.erase(0, pos + 1);
-        }
-        if ((pos = msg.find(',')) != string::npos) {
-            lat = stod(msg.substr(0, pos));
-            msg.erase(0, pos + 1);
-        }
-        if ((pos = msg.find(',')) != string::npos) {
-            lon = stod(msg.substr(0, pos));
-            msg.erase(0, pos + 1);
-        }
-        if ((pos = msg.find(',')) != string::npos) {
-            alt = stod(msg.substr(0, pos));
-            msg.erase(0, pos + 1);
-        }
-        if ((pos = msg.find(',')) != string::npos) {
-            spd = stod(msg.substr(0, pos));
-            msg.erase(0, pos + 1);
-        }
-        fuel = stod(msg);
+            // Check if the aircraft is already registered
+            bool aircraftFound = false;
+            {
+                std::lock_guard<std::mutex> lock(m_aircraftMutex);
 
-        // Check if the aircraft is already registered
-        Aircraft newAircraft(aircraftID, lat, lon, alt, spd, fuel);
-        bool aircraftFound = false;
-        for (const auto& aircraft : aircraftList) {
-            if (aircraft.aircraftID == aircraftID) {
-                aircraftFound = true;
-                break;
+                for (const auto& existingAircraft : m_aircraftList) {
+                    if (existingAircraft.GetAircraftID() == aircraft.GetAircraftID()) {
+                        aircraftFound = true;
+                        break;
+                    }
+                }
+            }
+
+			// Register or update aircraft if already registered
+            if (!aircraftFound) {
+                RegisterAircraft(aircraft);
+            }
+            else {
+                UpdateAircraft(aircraft);
             }
         }
 
-        // Register or update aircraft
-        if (!aircraftFound) {
-            registerAircraft(newAircraft);  // Register new aircraft
+        // Send response to the aircraft
+        std::string response = "Message received by " + m_towerName + " ground tower!";
+        send(clientSocket, response.c_str(), static_cast<int>(response.length()), 0);
+
+        closesocket(clientSocket);
+    }
+
+    // Parse a message from an aircraft
+    Aircraft GroundTower::parseAircraftMessage(const std::string& message) {
+        std::istringstream messageStream(message);
+		std::string token; // we use it to temporarly store the parsed data
+
+        // Parse message format: 
+        // ID,
+        // latitude,
+        // longitude,
+        // altitude,
+        // speed,
+        // fuel
+        std::string aircraftID;
+        double latitude = 0.0;
+        double longitude = 0.0;
+        double altitude = 0.0;
+        double speed = 0.0;
+        double fuelLevel = 0.0;
+
+        // ID
+        if (std::getline(messageStream, token, ',')) {
+            aircraftID = token;
         }
-        else {
-            updateAircraft(newAircraft);    // Update existing aircraft
+
+        // Latitude
+        if (std::getline(messageStream, token, ',')) {
+            try {
+                latitude = std::stod(token);
+            }
+            catch (const std::exception& e) {
+                std::cerr << "Error parsing latitude: " << e.what() << "\n";
+            }
         }
+
+        // Longitude
+        if (std::getline(messageStream, token, ',')) {
+            try {
+                longitude = std::stod(token);
+            }
+            catch (const std::exception& e) {
+                std::cerr << "Error parsing longitude: " << e.what() << "\n";
+            }
+        }
+
+        // Altitude
+        if (std::getline(messageStream, token, ',')) {
+            try {
+                altitude = std::stod(token);
+            }
+            catch (const std::exception& e) {
+                std::cerr << "Error parsing altitude: " << e.what() << "\n";
+            }
+        }
+
+        // Speed
+        if (std::getline(messageStream, token, ',')) {
+            try {
+                speed = std::stod(token);
+            }
+            catch (const std::exception& e) {
+                std::cerr << "Error parsing speed: " << e.what() << "\n";
+            }
+        }
+
+        // Fuel level
+        if (std::getline(messageStream, token)) {
+            try {
+                fuelLevel = std::stod(token);
+            }
+            catch (const std::exception& e) {
+                std::cerr << "Error parsing fuel level: " << e.what() << "\n";
+            }
+        }
+
+        return Aircraft(aircraftID, latitude, longitude, altitude, speed, fuelLevel);
     }
-
-    // Send a response to the aircraft
-    const char* response = "Message received by Ground Tower!";
-    send(client_socket, response, strlen(response), 0);
-
-    closesocket(client_socket);
-}
-
-
-// Start the Ground Tower Server
-void GroundTower::startListening() {
-    WSADATA wsaData;
-    int iResult = WSAStartup(MAKEWORD(2, 2), &wsaData);
-    if (iResult != 0) {
-        cerr << "WSAStartup failed: " << iResult << endl;
-        return;
-    }
-
-    server_fd = socket(AF_INET, SOCK_STREAM, 0);
-    if (server_fd == INVALID_SOCKET) {
-        cerr << "Socket failed: " << WSAGetLastError() << endl;
-        WSACleanup();
-        return;
-    }
-
-    // Start listening for aircraft on a separate thread
-    thread listenerThread(&GroundTower::listenForAircraft, this);
-    listenerThread.detach();  // Detach to keep listening for new aircraft
 }
