@@ -383,13 +383,21 @@ namespace PlaneSystem {
     }
 
 	// Send a command to an aircraft
-    bool GroundTower::SendCommand(const std::string& aircraftID, CommandType commandType, const std::string& customMessage) {
-        std::lock_guard<std::mutex> lock(m_aircraftMutex);
+    bool GroundTower::SendCommand(const std::string& aircraftID, CommandType commandType) {
+        SOCKET clientSocket;
+        bool aircraftExists = false;
 
-        // Check if aircraft exists in our connected sockets map
-        auto it = m_aircraftSockets.find(aircraftID);
+        // First get the client socket while holding the lock
+        {
+            std::lock_guard<std::mutex> lock(m_aircraftMutex);
+            auto it = m_aircraftSockets.find(aircraftID);
+            if (it != m_aircraftSockets.end()) {
+                clientSocket = it->second;
+                aircraftExists = true;
+            }
+        }
 
-        if (it == m_aircraftSockets.end()) {
+        if (!aircraftExists) {
             std::cerr << "Cannot send command: Aircraft " << aircraftID << " not connected.\n";
             return false;
         }
@@ -398,48 +406,34 @@ namespace PlaneSystem {
         std::string commandMessage = "CMD:";
         std::string timestamp = getCurrentTimestamp();
 
-		// Switch statement to determine the type of command
+        // Switch statement to determine the type of command
         switch (commandType) {
         case CommandType::WEATHER_ALERT:
             commandMessage += "[WEATHER ALERT] " + timestamp + " - Severe weather conditions ahead. "
                 + "Prepare for turbulence and possible route changes.";
             break;
-
         case CommandType::ROUTE_CHANGE:
             commandMessage += "[ROUTE CHANGE] " + timestamp + " - Please prepare for route adjustment. "
                 + "New navigation coordinates will follow.";
             break;
-
         case CommandType::ALTITUDE_CHANGE:
             commandMessage += "[ALTITUDE CHANGE] " + timestamp + " - Altitude adjustment required. "
                 + "Please standby for new altitude instructions.";
             break;
-
         case CommandType::EMERGENCY_BROADCAST:
             commandMessage += "[EMERGENCY ALERT] " + timestamp + " - ATTENTION: Emergency situation reported. "
                 + "All aircraft maintain current vectors and standby for instructions.";
             break;
-
         case CommandType::SYSTEM_DIAGNOSTIC:
             commandMessage += "[SYSTEM DIAGNOSTIC] " + timestamp + " - Please perform standard system diagnostic check "
                 + "and report back with results.";
             break;
-
-        case CommandType::CUSTOM_MESSAGE:
-            if (customMessage.empty()) {
-                std::cerr << "Custom message cannot be empty for CUSTOM_MESSAGE type.\n";
-                return false;
-            }
-            commandMessage += "[MESSAGE] " + timestamp + " - " + customMessage;
-            break;
-
         default:
             std::cerr << "Unknown command type.\n";
             return false;
         }
 
         // Send the command
-        SOCKET clientSocket = it->second;
         if (send(clientSocket, commandMessage.c_str(), static_cast<int>(commandMessage.length()), 0) == SOCKET_ERROR) {
             std::cerr << "Error sending command to " << aircraftID << ": " << WSAGetLastError() << "\n";
             return false;
@@ -453,19 +447,27 @@ namespace PlaneSystem {
     }
 
 	// Broadcast a command to all connected aircraft
-    int GroundTower::BroadcastCommand(CommandType commandType, const std::string& customMessage) {
-        std::lock_guard<std::mutex> lock(m_aircraftMutex);
+    int GroundTower::BroadcastCommand(CommandType commandType) {
+        std::vector<std::string> aircraftIDs;
 
-        if (m_aircraftSockets.empty()) {
-            std::cout << "No aircraft connected to broadcast command.\n";
-            return 0;
+        {
+            std::lock_guard<std::mutex> lock(m_aircraftMutex);
+            if (m_aircraftSockets.empty()) {
+                std::cout << "No aircraft connected to broadcast command.\n";
+                return 0;
+            }
+
+            // Copy the aircraft IDs
+            for (const auto& pair : m_aircraftSockets) {
+                aircraftIDs.push_back(pair.first);
+            }
         }
 
         int successCount = 0;
 
-        // For each connected aircraft
-        for (const auto& pair : m_aircraftSockets) {
-            if (SendCommand(pair.first, commandType, customMessage)) {
+        // Send the command to each aircraft using their IDs
+        for (const auto& id : aircraftIDs) {
+            if (SendCommand(id, commandType)) {
                 successCount++;
             }
         }

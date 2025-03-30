@@ -115,7 +115,6 @@ namespace PlaneSystem {
             ALTITUDE_CHANGE,
             EMERGENCY_BROADCAST,
             SYSTEM_DIAGNOSTIC,
-            CUSTOM_MESSAGE
         };
 
         /**
@@ -161,18 +160,16 @@ namespace PlaneSystem {
          * @brief Send a command to an aircraft
          * @param aircraftID ID of the aircraft to send the command to
          * @param commandType Type of command to send
-         * @param customMessage Custom message (required for CUSTOM_MESSAGE)
          * @return True if command was sent successfully, false otherwise
          */
-        bool SendCommand(const std::string& aircraftID, CommandType commandType, const std::string& customMessage = "");
+        bool SendCommand(const std::string& aircraftID, CommandType commandType);
 
         /**
          * @brief Broadcast a command to all connected aircraft
          * @param commandType Type of command to broadcast
-         * @param customMessage Custom message (required for CUSTOM_MESSAGE)
          * @return Number of aircraft the command was sent to
          */
-        int BroadcastCommand(CommandType commandType, const std::string& customMessage = "");
+        int BroadcastCommand(CommandType commandType);
     };
 }
 
