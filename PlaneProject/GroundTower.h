@@ -16,6 +16,7 @@
 #include <ctime>
 #include <iomanip>
 #include <chrono>
+#include <unordered_map>
 
 namespace PlaneSystem {
 
@@ -81,6 +82,11 @@ namespace PlaneSystem {
         */
         void logCommunication(const std::string& aircraftID, const std::string& message, bool isIncoming);
 
+        /**
+         * @brief Map of connected aircraft sockets
+         */
+        std::unordered_map<std::string, SOCKET> m_aircraftSockets;
+
     public:
         /**
 		* @brief Constructor to initialize the ground control tower
@@ -99,6 +105,17 @@ namespace PlaneSystem {
 		// Delete opy constructor and assignment operator 
 		GroundTower(const GroundTower&) = delete;
 		GroundTower& operator=(const GroundTower&) = delete;
+
+        /**
+         * @brief Enum for different types of commands that can be sent to aircraft
+         */
+        enum class CommandType {
+            WEATHER_ALERT,
+            ROUTE_CHANGE,
+            ALTITUDE_CHANGE,
+            EMERGENCY_BROADCAST,
+            SYSTEM_DIAGNOSTIC,
+        };
 
         /**
         * @brief Register an aircraft
@@ -138,6 +155,21 @@ namespace PlaneSystem {
         * @brief Display communication history
         */
         void DisplayCommunicationHistory() const;
+
+        /**
+         * @brief Send a command to an aircraft
+         * @param aircraftID ID of the aircraft to send the command to
+         * @param commandType Type of command to send
+         * @return True if command was sent successfully, false otherwise
+         */
+        bool SendCommand(const std::string& aircraftID, CommandType commandType);
+
+        /**
+         * @brief Broadcast a command to all connected aircraft
+         * @param commandType Type of command to broadcast
+         * @return Number of aircraft the command was sent to
+         */
+        int BroadcastCommand(CommandType commandType);
     };
 }
 
