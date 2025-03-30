@@ -134,8 +134,8 @@ int main(int argc, char* argv[]) {
     std::random_device rd;
     std::mt19937 gen(rd());
 
-    std::uniform_real_distribution<> latDist(40.7000, 40.7300);
-    std::uniform_real_distribution<> lonDist(-74.0200, -73.9800);
+    std::uniform_real_distribution<> latDist(-90.0000, 90.0000);
+    std::uniform_real_distribution<> lonDist(-90.0000, 90.0000);
     std::uniform_real_distribution<> altDist(9000.0, 11000.0);
     std::uniform_real_distribution<> spdDist(750.0, 850.0);
 
