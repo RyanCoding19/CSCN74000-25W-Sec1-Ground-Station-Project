@@ -79,7 +79,17 @@ void receiveServerMessages(SOCKET socket) {
         int bytesReceived = recv(socket, buffer, BUFFER_SIZE - 1, 0);
         if (bytesReceived > 0) {
             buffer[bytesReceived] = '\0';   // Null-terminate the received data
-            std::cout << "Server: " << buffer << std::endl;
+
+            std::string message(buffer);
+            // Check if this is a command message (starts with CMD:)
+            if (message.substr(0, 4) == "CMD:") {
+                std::cout << "\n=== GROUND CONTROL COMMAND ===\n";
+                std::cout << message.substr(4) << std::endl;
+                std::cout << "==============================\n";
+            }
+            else {
+                std::cout << "Server: " << buffer << std::endl;
+            }
         }
         else if (bytesReceived == 0) {
             std::cout << "Connection closed by server" << std::endl;
