@@ -28,6 +28,7 @@ int main() {
 
     cout << "Tower is now listening for aircraft connections..." << endl;
     cout << "Press Enter to display current aircraft status." << endl;
+    cout << "Press 'h' to display communication history." << endl;
     cout << "Enter 'q' to quit." << endl;
 
     string input;
@@ -37,11 +38,19 @@ int main() {
         if (input == "q" || input == "Q") {
             break;  // Break the loop == exit the program
         }
+        else if (input == "h") {
+            // Display communication history
+            tower.DisplayCommunicationHistory();
+        }
+        else {
+            // Display all registered aircraft whenever user presses Enter
+            tower.DisplayAllAircraft();
+        }
 
-        // Display all registered aircraft whenever user presses Enter
-        tower.DisplayAllAircraft();
-
-        cout << "Press Enter to refresh aircraft status or 'q' to quit." << endl;
+        cout << "Press Enter to refresh aircraft status," << endl;
+        cout << "Press 'h' to display communication history," << endl;
+        cout << "Press 'H' to display detailed communication history," << endl;
+        cout << "or 'q' to quit." << endl;
     }
 
     // Properly shut down the server
