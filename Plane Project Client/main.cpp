@@ -8,6 +8,7 @@
 #include <mutex>
 #include <atomic>
 #include <cstdlib>
+#include <future>
 
 constexpr uint16_t PORT = 8080;
 constexpr const char* SERVER_IP = "127.0.0.1";
@@ -134,8 +135,8 @@ int main(int argc, char* argv[]) {
     std::random_device rd;
     std::mt19937 gen(rd());
 
-    std::uniform_real_distribution<> latDist(-90.0000, 90.0000);
-    std::uniform_real_distribution<> lonDist(-90.0000, 90.0000);
+    std::uniform_real_distribution<> latDist(40.7000, 40.7300);
+    std::uniform_real_distribution<> lonDist(-74.0200, -73.9800);
     std::uniform_real_distribution<> altDist(9000.0, 11000.0);
     std::uniform_real_distribution<> spdDist(750.0, 850.0);
 
@@ -157,7 +158,7 @@ int main(int argc, char* argv[]) {
     while (true) {
         g_keepRunning = true;
 
-        // Create socket with error checking
+        // Create socket 
         clientSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
         if (clientSocket == INVALID_SOCKET) {
             std::cerr << "Socket creation failed: " << WSAGetLastError() << "\n";
@@ -181,11 +182,27 @@ int main(int argc, char* argv[]) {
         }
 
         std::cout << "Connected to ground control!" << std::endl;
+        std::cout << "Press Enter to disconnect, or wait for updates..." << std::endl;
 
         // Start sender and receiver threads
         std::thread sender(sendAircraftData, clientSocket, std::ref(aircraft));
         std::thread receiver(receiveServerMessages, clientSocket);
 
+        // Use a future to wait for user input 
+        std::future<void> userInput = std::async(std::launch::async, [&]() {
+            std::string input;
+            std::getline(std::cin, input);
+
+            g_keepRunning = false;
+
+            // Shutdown the socket to signal disconnection to the server
+            if (clientSocket != INVALID_SOCKET) {
+                shutdown(clientSocket, SD_SEND); // Signal we're done sending
+                std::cout << "Connection closed by client (Aircraft " << aircraft.GetAircraftID() << ")" << std::endl;
+            }
+            });
+
+        // Wait for either threads to finish or user to press Enter
         if (sender.joinable()) {
             sender.join();
         }
@@ -197,6 +214,15 @@ int main(int argc, char* argv[]) {
         std::cout << "Disconnected from ground control tower." << std::endl;
 
         cleanupSocket(clientSocket);
+
+        std::cout << "Reconnect? (y/n): ";
+        std::string reconnect;
+        std::getline(std::cin, reconnect);
+
+        if (reconnect != "y" && reconnect != "Y") {
+            std::cout << "Exiting program." << std::endl;
+            break;
+        }
 
         std::cout << "Reconnecting in 3 seconds..." << std::endl;
         std::this_thread::sleep_for(std::chrono::seconds(3));

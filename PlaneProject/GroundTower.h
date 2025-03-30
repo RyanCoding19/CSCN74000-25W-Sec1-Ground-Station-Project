@@ -13,7 +13,9 @@
 #include <atomic>
 #include <sstream>
 #include <algorithm>
+#include <ctime>
 #include <iomanip>
+#include <chrono>
 
 namespace PlaneSystem {
 
@@ -52,6 +54,32 @@ namespace PlaneSystem {
         * @return Aircraft object with the parsed data
         */
 		Aircraft parseAircraftMessage(const std::string& message);
+
+        /**
+         * @brief Communication log entry 
+		 * @param timestamp Timestamp of the communication
+		 * @param aircraftID Aircraft ID
+		 * @param message Communication message
+		 * @param isIncoming True for incoming, false for outgoing
+         */
+        struct CommunicationLogEntry {
+            std::string timestamp;
+            std::string aircraftID;
+            std::string message;
+            bool isIncoming;  // true for incoming, false for outgoing
+        };
+
+		std::vector<CommunicationLogEntry> m_communicationLog; /**< Communication log */
+
+        /**
+		* @brief Helper method to get the current timestamp
+        */
+        std::string getCurrentTimestamp() const;
+
+        /**
+        * @brief Helper method to log communcation 
+        */
+        void logCommunication(const std::string& aircraftID, const std::string& message, bool isIncoming);
 
     public:
         /**
@@ -105,6 +133,11 @@ namespace PlaneSystem {
 		* @return True if the tower is listening, false otherwise
         */
 		bool IsListening() const;
+
+        /**
+        * @brief Display communication history
+        */
+        void DisplayCommunicationHistory() const;
     };
 }
 

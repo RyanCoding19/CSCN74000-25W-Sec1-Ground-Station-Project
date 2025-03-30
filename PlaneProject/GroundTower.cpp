@@ -111,11 +111,6 @@ namespace PlaneSystem {
         CleanupSocket();
     }
 
-    // Check if the tower is currently listening
-    bool GroundTower::IsListening() const {
-        return m_isListening;
-    }
-
     // Listen for new aircraft connections
     void GroundTower::listenForAircraft() {
         struct sockaddr_in serverAddress;
@@ -181,11 +176,15 @@ namespace PlaneSystem {
 
             if (bytesReceived > 0) {
                 buffer[bytesReceived] = '\0'; // Null-terminate the received data
+                std::string receivedMsg(buffer);
                 std::cout << "Received from aircraft: " << buffer << "\n";
 
                 // Parse message
                 std::string message(buffer);
                 Aircraft aircraft = parseAircraftMessage(message);
+
+                // Log the incoming communication
+                logCommunication(aircraft.GetAircraftID(), receivedMsg, true);
 
                 // Check if the aircraft is already registered
                 bool aircraftFound = false;
@@ -214,6 +213,9 @@ namespace PlaneSystem {
                     std::cerr << "Error sending response: " << WSAGetLastError() << "\n";
                     break;
                 }
+
+                // Log the outgoing communication
+                logCommunication(aircraft.GetAircraftID(), response, false);
             }
             else if (bytesReceived == 0) {
                 // Connection closed by the client
@@ -305,5 +307,52 @@ namespace PlaneSystem {
         }
 
         return Aircraft(aircraftID, latitude, longitude, altitude, speed, fuelLevel);
+    }
+
+    // Get current timestamp
+    std::string GroundTower::getCurrentTimestamp() const {
+        auto now = std::chrono::system_clock::now();
+        auto now_c = std::chrono::system_clock::to_time_t(now);
+
+        std::tm now_tm;
+        localtime_s(&now_tm, &now_c);
+
+        std::stringstream ss;
+        ss << std::put_time(&now_tm, "%Y-%m-%d %H:%M:%S");
+        return ss.str();
+    }
+
+    // Check if the tower is currently listening
+    bool GroundTower::IsListening() const {
+        return m_isListening;
+    }
+
+    // Log communication
+    void GroundTower::logCommunication(const std::string& aircraftID, const std::string& message, bool isIncoming) {
+        std::lock_guard<std::mutex> lock(m_aircraftMutex);
+
+        CommunicationLogEntry entry;
+        entry.timestamp = getCurrentTimestamp();
+        entry.aircraftID = aircraftID;
+        entry.message = message;
+        entry.isIncoming = isIncoming;
+
+        m_communicationLog.push_back(entry);
+    }
+
+    // Method to display communication history
+    void GroundTower::DisplayCommunicationHistory() const {
+        std::lock_guard<std::mutex> lock(m_aircraftMutex);
+
+        std::cout << "\n=== Communication History for " << m_towerName << " ===\n";
+        if (m_communicationLog.empty()) {
+            std::cout << "No communications recorded.\n";
+            return;
+        }
+
+        for (const auto& entry : m_communicationLog) {
+            std::cout << entry.timestamp << " | " << entry.aircraftID << " | " << (entry.isIncoming ? "RECEIVED" : "SENT") << " | ";
+            std::cout << entry.message << "\n";
+        }
     }
 }
