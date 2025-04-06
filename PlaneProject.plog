@@ -1,0 +1,1468 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="Solution_Path">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="SolutionPath" type="xs:string" minOccurs="0" />
+                <xs:element name="SolutionVersion" type="xs:string" minOccurs="0" />
+                <xs:element name="PlogVersion" type="xs:unsignedInt" minOccurs="0" />
+                <xs:element name="ModificationDate" msdata:DateTimeMode="Utc" type="xs:dateTime" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="PVS-Studio_Analysis_Log">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="FavIcon" type="xs:boolean" minOccurs="0" msdata:Ordinal="0" />
+                <xs:element name="Level" type="xs:unsignedInt" minOccurs="0" msdata:Ordinal="1" />
+                <xs:element name="DefaultOrder" type="xs:int" minOccurs="0" msdata:Ordinal="2" />
+                <xs:element name="ErrorCode" type="xs:string" msdata:Ordinal="3" />
+                <xs:element name="Message" type="xs:string" msdata:Ordinal="4" />
+                <xs:element name="Project" type="xs:string" minOccurs="0" msdata:Ordinal="5" />
+                <xs:element name="ShortFile" type="xs:string" minOccurs="0" msdata:Ordinal="6" />
+                <xs:element name="Line" type="xs:int" msdata:Ordinal="7" />
+                <xs:element name="FalseAlarm" type="xs:boolean" minOccurs="0" msdata:Ordinal="8" />
+                <xs:element name="File" type="xs:string" msdata:Ordinal="9" />
+                <xs:element name="CodePrev" type="xs:unsignedInt" minOccurs="0" msdata:Ordinal="10" />
+                <xs:element name="CodeCurrent" type="xs:unsignedInt" minOccurs="0" msdata:Ordinal="11" />
+                <xs:element name="CodeNext" type="xs:unsignedInt" minOccurs="0" msdata:Ordinal="12" />
+                <xs:element name="TrialMessage" type="xs:boolean" minOccurs="0" msdata:Ordinal="13" />
+                <xs:element name="Analyzer" type="xs:int" minOccurs="0" msdata:Ordinal="14" />
+                <xs:element name="LineExtension" type="xs:string" minOccurs="0" msdata:Ordinal="15" />
+                <xs:element name="Retired" type="xs:boolean" default="false" minOccurs="0" msdata:Ordinal="16" />
+                <xs:element name="AnalyzedSourceFiles" type="xs:string" minOccurs="0" msdata:Ordinal="17" />
+                <xs:element name="CWECode" type="xs:string" minOccurs="0" msdata:Ordinal="18" />
+                <xs:element name="SAST" type="xs:string" minOccurs="0" msdata:Ordinal="19" />
+                <xs:element name="Positions" msdata:DataType="ProgramVerificationSystems.PVSStudio.CommonTypes.SourceFilePositions, PVS-Studio-vs2022, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" type="xs:anyType" minOccurs="0" msdata:Ordinal="20" />
+                <xs:element name="MISRA" type="xs:string" minOccurs="0" msdata:Ordinal="21" />
+              </xs:sequence>
+              <xs:attribute name="ErrorCodeNumeric" msdata:ReadOnly="true" msdata:Expression="IIF(LEN(ErrorCode) &lt; 2 OR (SUBSTRING(ErrorCode, 1, 1) &lt;&gt; 'V'), 0, CONVERT(SUBSTRING(ErrorCode, 2, LEN(ErrorCode) - 1), 'System.UInt32'))" type="xs:unsignedInt" use="prohibited" />
+              <xs:attribute name="CWECodeNumeric" msdata:ReadOnly="true" msdata:Expression="ISNULL(IIF(LEN(CWECode) &lt; 4 + 1 OR (SUBSTRING(CWECode, 1, 4) &lt;&gt; 'CWE-'), 4294967295, CONVERT(SUBSTRING(CWECode, 4 + 1, LEN(CWECode) - 4), 'System.UInt32')), 4294967295)" type="xs:unsignedInt" use="prohibited" />
+              <xs:attribute name="SuppressFilesContainingMessage" type="xs:string" msdata:DefaultValue="" use="prohibited" />
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+      <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//PVS-Studio_Analysis_Log" />
+        <xs:field xpath="Line" />
+        <xs:field xpath="Message" />
+        <xs:field xpath="File" />
+        <xs:field xpath="ErrorCode" />
+      </xs:unique>
+    </xs:element>
+  </xs:schema>
+  <Solution_Path>
+    <SolutionPath>C:\Users\liamm\Desktop\steve\PlaneProject.sln</SolutionPath>
+    <SolutionVersion>17.0</SolutionVersion>
+    <PlogVersion>9</PlogVersion>
+    <ModificationDate>2025-04-06T19:16:16.5634142Z</ModificationDate>
+  </Solution_Path>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>1</DefaultOrder>
+    <ErrorCode>V2506</ErrorCode>
+    <Message>A function should have a single point of exit at the end.</Message>
+    <Project>PlaneProject</Project>
+    <ShortFile>ServerHeader.cpp</ShortFile>
+    <Line>6</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\PlaneProject\ServerHeader.cpp</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>1320271428</CodeCurrent>
+    <CodeNext>1593345</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-6-6-5</SAST>
+    <Positions>
+      <Position lines="6,11,13">C:\Users\liamm\Desktop\steve\PlaneProject\ServerHeader.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>2</DefaultOrder>
+    <ErrorCode>V2547</ErrorCode>
+    <Message>The return value of non-void function 'WSACleanup' should be used.</Message>
+    <Project>PlaneProject</Project>
+    <ShortFile>ServerHeader.cpp</ShortFile>
+    <Line>17</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\PlaneProject\ServerHeader.cpp</File>
+    <CodePrev>42467417</CodePrev>
+    <CodeCurrent>402713</CodeCurrent>
+    <CodeNext>125</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-0-1-7</SAST>
+    <Positions>
+      <Position lines="17">C:\Users\liamm\Desktop\steve\PlaneProject\ServerHeader.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>3</DefaultOrder>
+    <ErrorCode>V2575</ErrorCode>
+    <Message>The global namespace should only contain 'main', namespace declarations and extern 'C' declaration.</Message>
+    <Project>PlaneProject</Project>
+    <ShortFile>main.cpp</ShortFile>
+    <Line>16</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\PlaneProject\main.cpp</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>12463563</CodeCurrent>
+    <CodeNext>3190603909</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-7-3-1</SAST>
+    <Positions>
+      <Position lines="16">C:\Users\liamm\Desktop\steve\PlaneProject\main.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>4</DefaultOrder>
+    <ErrorCode>V2575</ErrorCode>
+    <Message>The global namespace should only contain 'main', namespace declarations and extern 'C' declaration.</Message>
+    <Project>PlaneProject</Project>
+    <ShortFile>main.cpp</ShortFile>
+    <Line>17</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\PlaneProject\main.cpp</File>
+    <CodePrev>12463563</CodePrev>
+    <CodeCurrent>3190603909</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-7-3-1</SAST>
+    <Positions>
+      <Position lines="17">C:\Users\liamm\Desktop\steve\PlaneProject\main.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>5</DefaultOrder>
+    <ErrorCode>V2547</ErrorCode>
+    <Message>The return value of non-void function 'ignore' should be used.</Message>
+    <Project>PlaneProject</Project>
+    <ShortFile>main.cpp</ShortFile>
+    <Line>32</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\PlaneProject\main.cpp</File>
+    <CodePrev>151557</CodePrev>
+    <CodeCurrent>3761727051</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-0-1-7</SAST>
+    <Positions>
+      <Position lines="32">C:\Users\liamm\Desktop\steve\PlaneProject\main.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>6</DefaultOrder>
+    <ErrorCode>V2520</ErrorCode>
+    <Message>Every switch-clause should be terminated by an unconditional 'break' or 'throw' statement.</Message>
+    <Project>PlaneProject</Project>
+    <ShortFile>main.cpp</ShortFile>
+    <Line>52</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\PlaneProject\main.cpp</File>
+    <CodePrev>2437210042</CodePrev>
+    <CodeCurrent>1459797</CodeCurrent>
+    <CodeNext>2084</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-6-4-5</SAST>
+    <Positions>
+      <Position lines="52,68">C:\Users\liamm\Desktop\steve\PlaneProject\main.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>7</DefaultOrder>
+    <ErrorCode>V2547</ErrorCode>
+    <Message>The return value of non-void function 'ignore' should be used.</Message>
+    <Project>PlaneProject</Project>
+    <ShortFile>main.cpp</ShortFile>
+    <Line>76</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\PlaneProject\main.cpp</File>
+    <CodePrev>2445971</CodePrev>
+    <CodeCurrent>942864413</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-0-1-7</SAST>
+    <Positions>
+      <Position lines="76">C:\Users\liamm\Desktop\steve\PlaneProject\main.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>8</DefaultOrder>
+    <ErrorCode>V2547</ErrorCode>
+    <Message>The return value of non-void function 'getline' should be used.</Message>
+    <Project>PlaneProject</Project>
+    <ShortFile>main.cpp</ShortFile>
+    <Line>83</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\PlaneProject\main.cpp</File>
+    <CodePrev>1160054183</CodePrev>
+    <CodeCurrent>548717297</CodeCurrent>
+    <CodeNext>125</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-0-1-7</SAST>
+    <Positions>
+      <Position lines="83">C:\Users\liamm\Desktop\steve\PlaneProject\main.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>9</DefaultOrder>
+    <ErrorCode>V808</ErrorCode>
+    <Message>'customMessage' object of 'basic_string' type was created but was not utilized.</Message>
+    <Project>PlaneProject</Project>
+    <ShortFile>main.cpp</ShortFile>
+    <Line>45</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\PlaneProject\main.cpp</File>
+    <CodePrev>6060407</CodePrev>
+    <CodeCurrent>48381941</CodeCurrent>
+    <CodeNext>149770445</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>5</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <Positions>
+      <Position lines="45">C:\Users\liamm\Desktop\steve\PlaneProject\main.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>10</DefaultOrder>
+    <ErrorCode>V2551</ErrorCode>
+    <Message>The 'success' variable should be declared in a scope that minimizes its visibility.</Message>
+    <Project>PlaneProject</Project>
+    <ShortFile>main.cpp</ShortFile>
+    <Line>47</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\PlaneProject\main.cpp</File>
+    <CodePrev>149770445</CodePrev>
+    <CodeCurrent>9216845</CodeCurrent>
+    <CodeNext>308367</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-3-4-1</SAST>
+    <Positions>
+      <Position lines="47,100">C:\Users\liamm\Desktop\steve\PlaneProject\main.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>11</DefaultOrder>
+    <ErrorCode>V2551</ErrorCode>
+    <Message>The 'cmdSent' variable should be declared in a scope that minimizes its visibility.</Message>
+    <Project>PlaneProject</Project>
+    <ShortFile>main.cpp</ShortFile>
+    <Line>48</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\PlaneProject\main.cpp</File>
+    <CodePrev>9216845</CodePrev>
+    <CodeCurrent>308367</CodeCurrent>
+    <CodeNext>3093930190</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-3-4-1</SAST>
+    <Positions>
+      <Position lines="48,91">C:\Users\liamm\Desktop\steve\PlaneProject\main.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>12</DefaultOrder>
+    <ErrorCode>V2506</ErrorCode>
+    <Message>A function should have a single point of exit at the end.</Message>
+    <Project>PlaneProject</Project>
+    <ShortFile>main.cpp</ShortFile>
+    <Line>19</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\PlaneProject\main.cpp</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>296585638</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-6-6-5</SAST>
+    <Positions>
+      <Position lines="19,36,40,69,87">C:\Users\liamm\Desktop\steve\PlaneProject\main.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>13</DefaultOrder>
+    <ErrorCode>V2547</ErrorCode>
+    <Message>The return value of non-void function 'getline' should be used.</Message>
+    <Project>PlaneProject</Project>
+    <ShortFile>main.cpp</ShortFile>
+    <Line>129</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\PlaneProject\main.cpp</File>
+    <CodePrev>169269</CodePrev>
+    <CodeCurrent>17147025</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-0-1-7</SAST>
+    <Positions>
+      <Position lines="129">C:\Users\liamm\Desktop\steve\PlaneProject\main.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>14</DefaultOrder>
+    <ErrorCode>V2506</ErrorCode>
+    <Message>A function should have a single point of exit at the end.</Message>
+    <Project>PlaneProject</Project>
+    <ShortFile>main.cpp</ShortFile>
+    <Line>111</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\PlaneProject\main.cpp</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>37897</CodeCurrent>
+    <CodeNext>2963429777</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-6-6-5</SAST>
+    <Positions>
+      <Position lines="111,118,157">C:\Users\liamm\Desktop\steve\PlaneProject\main.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>15</DefaultOrder>
+    <ErrorCode>V2575</ErrorCode>
+    <Message>The global namespace should only contain 'main', namespace declarations and extern 'C' declaration.</Message>
+    <Project>PlaneProject</Project>
+    <ShortFile>main.cpp</ShortFile>
+    <Line>19</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\PlaneProject\main.cpp</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>296585638</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-7-3-1</SAST>
+    <Positions>
+      <Position lines="19">C:\Users\liamm\Desktop\steve\PlaneProject\main.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>16</DefaultOrder>
+    <ErrorCode>V2506</ErrorCode>
+    <Message>A function should have a single point of exit at the end.</Message>
+    <Project>PlaneProject</Project>
+    <ShortFile>GroundTower.cpp</ShortFile>
+    <Line>66</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\PlaneProject\GroundTower.cpp</File>
+    <CodePrev>3076653050</CodePrev>
+    <CodeCurrent>1845966843</CodeCurrent>
+    <CodeNext>11801557</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-6-6-5</SAST>
+    <Positions>
+      <Position lines="66,69,75,83,90">C:\Users\liamm\Desktop\steve\PlaneProject\GroundTower.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>17</DefaultOrder>
+    <ErrorCode>V2547</ErrorCode>
+    <Message>The return value of non-void function 'closesocket' should be used.</Message>
+    <Project>PlaneProject</Project>
+    <ShortFile>GroundTower.cpp</ShortFile>
+    <Line>102</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\PlaneProject\GroundTower.cpp</File>
+    <CodePrev>1997895404</CodePrev>
+    <CodeCurrent>1146550073</CodeCurrent>
+    <CodeNext>1574419278</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-0-1-7</SAST>
+    <Positions>
+      <Position lines="102">C:\Users\liamm\Desktop\steve\PlaneProject\GroundTower.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>18</DefaultOrder>
+    <ErrorCode>V2506</ErrorCode>
+    <Message>The 'return' statement should be the last statement of a function.</Message>
+    <Project>PlaneProject</Project>
+    <ShortFile>GroundTower.cpp</ShortFile>
+    <Line>94</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\PlaneProject\GroundTower.cpp</File>
+    <CodePrev>3076651347</CodePrev>
+    <CodeCurrent>3070433056</CodeCurrent>
+    <CodeNext>21271509</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-6-6-5</SAST>
+    <Positions>
+      <Position lines="94,96">C:\Users\liamm\Desktop\steve\PlaneProject\GroundTower.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>19</DefaultOrder>
+    <ErrorCode>V2547</ErrorCode>
+    <Message>The return value of non-void function 'closesocket' should be used.</Message>
+    <Project>PlaneProject</Project>
+    <ShortFile>GroundTower.cpp</ShortFile>
+    <Line>126</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\PlaneProject\GroundTower.cpp</File>
+    <CodePrev>1301622590</CodePrev>
+    <CodeCurrent>1146550073</CodeCurrent>
+    <CodeNext>1574419278</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-0-1-7</SAST>
+    <Positions>
+      <Position lines="126">C:\Users\liamm\Desktop\steve\PlaneProject\GroundTower.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>20</DefaultOrder>
+    <ErrorCode>V2547</ErrorCode>
+    <Message>The return value of non-void function 'closesocket' should be used.</Message>
+    <Project>PlaneProject</Project>
+    <ShortFile>GroundTower.cpp</ShortFile>
+    <Line>135</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\PlaneProject\GroundTower.cpp</File>
+    <CodePrev>1334816894</CodePrev>
+    <CodeCurrent>1146550073</CodeCurrent>
+    <CodeNext>1574419278</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-0-1-7</SAST>
+    <Positions>
+      <Position lines="135">C:\Users\liamm\Desktop\steve\PlaneProject\GroundTower.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>21</DefaultOrder>
+    <ErrorCode>V2506</ErrorCode>
+    <Message>A function should have a single point of exit at the end.</Message>
+    <Project>PlaneProject</Project>
+    <ShortFile>GroundTower.cpp</ShortFile>
+    <Line>115</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\PlaneProject\GroundTower.cpp</File>
+    <CodePrev>1009384216</CodePrev>
+    <CodeCurrent>1905468786</CodeCurrent>
+    <CodeNext>4179554318</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-6-6-5</SAST>
+    <Positions>
+      <Position lines="115,129,138">C:\Users\liamm\Desktop\steve\PlaneProject\GroundTower.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>22</DefaultOrder>
+    <ErrorCode>V2578</ErrorCode>
+    <Message>The 'buffer' array should not decay to a pointer.</Message>
+    <Project>PlaneProject</Project>
+    <ShortFile>GroundTower.cpp</ShortFile>
+    <Line>174</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\PlaneProject\GroundTower.cpp</File>
+    <CodePrev>235956958</CodePrev>
+    <CodeCurrent>2601356939</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-5-2-12</SAST>
+    <Positions>
+      <Position lines="174">C:\Users\liamm\Desktop\steve\PlaneProject\GroundTower.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>23</DefaultOrder>
+    <ErrorCode>V2547</ErrorCode>
+    <Message>The return value of non-void function 'memset' should be used.</Message>
+    <Project>PlaneProject</Project>
+    <ShortFile>GroundTower.cpp</ShortFile>
+    <Line>174</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\PlaneProject\GroundTower.cpp</File>
+    <CodePrev>235956958</CodePrev>
+    <CodeCurrent>2601356939</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-0-1-7</SAST>
+    <Positions>
+      <Position lines="174">C:\Users\liamm\Desktop\steve\PlaneProject\GroundTower.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>24</DefaultOrder>
+    <ErrorCode>V2578</ErrorCode>
+    <Message>The 'buffer' array should not decay to a pointer.</Message>
+    <Project>PlaneProject</Project>
+    <ShortFile>GroundTower.cpp</ShortFile>
+    <Line>177</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\PlaneProject\GroundTower.cpp</File>
+    <CodePrev>615889692</CodePrev>
+    <CodeCurrent>183367682</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-5-2-12</SAST>
+    <Positions>
+      <Position lines="177">C:\Users\liamm\Desktop\steve\PlaneProject\GroundTower.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>25</DefaultOrder>
+    <ErrorCode>V2547</ErrorCode>
+    <Message>The return value of non-void function 'erase' should be used.</Message>
+    <Project>PlaneProject</Project>
+    <ShortFile>GroundTower.cpp</ShortFile>
+    <Line>249</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\PlaneProject\GroundTower.cpp</File>
+    <CodePrev>3943709663</CodePrev>
+    <CodeCurrent>2585288805</CodeCurrent>
+    <CodeNext>125</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-0-1-7</SAST>
+    <Positions>
+      <Position lines="249">C:\Users\liamm\Desktop\steve\PlaneProject\GroundTower.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>26</DefaultOrder>
+    <ErrorCode>V2547</ErrorCode>
+    <Message>The return value of non-void function 'erase' should be used.</Message>
+    <Project>PlaneProject</Project>
+    <ShortFile>GroundTower.cpp</ShortFile>
+    <Line>261</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\PlaneProject\GroundTower.cpp</File>
+    <CodePrev>3943709663</CodePrev>
+    <CodeCurrent>2585288805</CodeCurrent>
+    <CodeNext>125</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-0-1-7</SAST>
+    <Positions>
+      <Position lines="261">C:\Users\liamm\Desktop\steve\PlaneProject\GroundTower.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>27</DefaultOrder>
+    <ErrorCode>V2547</ErrorCode>
+    <Message>The return value of non-void function 'closesocket' should be used.</Message>
+    <Project>PlaneProject</Project>
+    <ShortFile>GroundTower.cpp</ShortFile>
+    <Line>268</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\PlaneProject\GroundTower.cpp</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2293231105</CodeCurrent>
+    <CodeNext>125</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-0-1-7</SAST>
+    <Positions>
+      <Position lines="268">C:\Users\liamm\Desktop\steve\PlaneProject\GroundTower.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>28</DefaultOrder>
+    <ErrorCode>V2530</ErrorCode>
+    <Message>The loop should be terminated with no more than one 'break' or 'goto' statement.</Message>
+    <Project>PlaneProject</Project>
+    <ShortFile>GroundTower.cpp</ShortFile>
+    <Line>172</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\PlaneProject\GroundTower.cpp</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>86578133</CodeCurrent>
+    <CodeNext>235956958</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-6-6-4</SAST>
+    <Positions>
+      <Position lines="172,236,252,264">C:\Users\liamm\Desktop\steve\PlaneProject\GroundTower.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>29</DefaultOrder>
+    <ErrorCode>V2547</ErrorCode>
+    <Message>The return value of non-void function 'localtime_s' should be used.</Message>
+    <Project>PlaneProject</Project>
+    <ShortFile>GroundTower.cpp</ShortFile>
+    <Line>354</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\PlaneProject\GroundTower.cpp</File>
+    <CodePrev>707673</CodePrev>
+    <CodeCurrent>1500237583</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-0-1-7</SAST>
+    <Positions>
+      <Position lines="354">C:\Users\liamm\Desktop\steve\PlaneProject\GroundTower.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>30</DefaultOrder>
+    <ErrorCode>V2578</ErrorCode>
+    <Message>The string literal should not decay to a pointer to char. Consider inspecting the second function argument.</Message>
+    <Project>PlaneProject</Project>
+    <ShortFile>GroundTower.cpp</ShortFile>
+    <Line>357</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\PlaneProject\GroundTower.cpp</File>
+    <CodePrev>45089609</CodePrev>
+    <CodeCurrent>4261332218</CodeCurrent>
+    <CodeNext>1415033</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-5-2-12</SAST>
+    <Positions>
+      <Position lines="357">C:\Users\liamm\Desktop\steve\PlaneProject\GroundTower.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>31</DefaultOrder>
+    <ErrorCode>V2506</ErrorCode>
+    <Message>The 'return' statement should be the last statement of a function.</Message>
+    <Project>PlaneProject</Project>
+    <ShortFile>GroundTower.cpp</ShortFile>
+    <Line>380</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\PlaneProject\GroundTower.cpp</File>
+    <CodePrev>1670075061</CodePrev>
+    <CodeCurrent>2312454037</CodeCurrent>
+    <CodeNext>3943709663</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-6-6-5</SAST>
+    <Positions>
+      <Position lines="380,386">C:\Users\liamm\Desktop\steve\PlaneProject\GroundTower.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>32</DefaultOrder>
+    <ErrorCode>V2520</ErrorCode>
+    <Message>Every switch-clause should be terminated by an unconditional 'break' or 'throw' statement.</Message>
+    <Project>PlaneProject</Project>
+    <ShortFile>GroundTower.cpp</ShortFile>
+    <Line>420</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\PlaneProject\GroundTower.cpp</File>
+    <CodePrev>1818057499</CodePrev>
+    <CodeCurrent>46720557</CodeCurrent>
+    <CodeNext>1637846211</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-6-4-5</SAST>
+    <Positions>
+      <Position lines="420,441">C:\Users\liamm\Desktop\steve\PlaneProject\GroundTower.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>33</DefaultOrder>
+    <ErrorCode>V614</ErrorCode>
+    <Message>Potentially uninitialized variable 'clientSocket' used. Consider checking the first actual argument of the 'send' function.</Message>
+    <Project>PlaneProject</Project>
+    <ShortFile>GroundTower.cpp</ShortFile>
+    <Line>447</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\PlaneProject\GroundTower.cpp</File>
+    <CodePrev>1192740</CodePrev>
+    <CodeCurrent>3980824598</CodeCurrent>
+    <CodeNext>1589459907</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <CWECode>CWE-457</CWECode>
+    <SAST>CERT-EXP53-CPP</SAST>
+    <Positions>
+      <Position lines="447">C:\Users\liamm\Desktop\steve\PlaneProject\GroundTower.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>34</DefaultOrder>
+    <ErrorCode>V2538</ErrorCode>
+    <Message>The value of uninitialized variable 'clientSocket' should not be used. Consider checking the first actual argument of the 'send' function.</Message>
+    <Project>PlaneProject</Project>
+    <ShortFile>GroundTower.cpp</ShortFile>
+    <Line>447</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\PlaneProject\GroundTower.cpp</File>
+    <CodePrev>1192740</CodePrev>
+    <CodeCurrent>3980824598</CodeCurrent>
+    <CodeNext>1589459907</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-8-5-1</SAST>
+    <Positions>
+      <Position lines="447">C:\Users\liamm\Desktop\steve\PlaneProject\GroundTower.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>35</DefaultOrder>
+    <ErrorCode>V2506</ErrorCode>
+    <Message>A function should have a single point of exit at the end.</Message>
+    <Project>PlaneProject</Project>
+    <ShortFile>GroundTower.cpp</ShortFile>
+    <Line>396</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\PlaneProject\GroundTower.cpp</File>
+    <CodePrev>1213255708</CodePrev>
+    <CodeCurrent>659944426</CodeCurrent>
+    <CodeNext>27997967</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-6-6-5</SAST>
+    <Positions>
+      <Position lines="396,412,443,449,456">C:\Users\liamm\Desktop\steve\PlaneProject\GroundTower.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>36</DefaultOrder>
+    <ErrorCode>V2506</ErrorCode>
+    <Message>A function should have a single point of exit at the end.</Message>
+    <Project>PlaneProject</Project>
+    <ShortFile>GroundTower.cpp</ShortFile>
+    <Line>460</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\PlaneProject\GroundTower.cpp</File>
+    <CodePrev>3277255871</CodePrev>
+    <CodeCurrent>500847280</CodeCurrent>
+    <CodeNext>4278452471</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-6-6-5</SAST>
+    <Positions>
+      <Position lines="460,467,486">C:\Users\liamm\Desktop\steve\PlaneProject\GroundTower.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>37</DefaultOrder>
+    <ErrorCode>V2575</ErrorCode>
+    <Message>The global namespace should only contain 'main', namespace declarations and extern 'C' declaration.</Message>
+    <Project>Plane Project Client</Project>
+    <ShortFile>main.cpp</ShortFile>
+    <Line>19</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>3190603909</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-7-3-1</SAST>
+    <Positions>
+      <Position lines="19">C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>38</DefaultOrder>
+    <ErrorCode>V2578</ErrorCode>
+    <Message>The 'buffer' array should not decay to a pointer.</Message>
+    <Project>Plane Project Client</Project>
+    <ShortFile>main.cpp</ShortFile>
+    <Line>77</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</File>
+    <CodePrev>137723258</CodePrev>
+    <CodeCurrent>907602480</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-5-2-12</SAST>
+    <Positions>
+      <Position lines="77">C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>39</DefaultOrder>
+    <ErrorCode>V2547</ErrorCode>
+    <Message>The return value of non-void function 'memset' should be used.</Message>
+    <Project>Plane Project Client</Project>
+    <ShortFile>main.cpp</ShortFile>
+    <Line>77</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</File>
+    <CodePrev>137723258</CodePrev>
+    <CodeCurrent>907602480</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-0-1-7</SAST>
+    <Positions>
+      <Position lines="77">C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>40</DefaultOrder>
+    <ErrorCode>V2578</ErrorCode>
+    <Message>The 'buffer' array should not decay to a pointer.</Message>
+    <Project>Plane Project Client</Project>
+    <ShortFile>main.cpp</ShortFile>
+    <Line>79</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>948535452</CodeCurrent>
+    <CodeNext>46896633</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-5-2-12</SAST>
+    <Positions>
+      <Position lines="79">C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>41</DefaultOrder>
+    <ErrorCode>V2530</ErrorCode>
+    <Message>The loop should be terminated with no more than one 'break' or 'goto' statement.</Message>
+    <Project>Plane Project Client</Project>
+    <ShortFile>main.cpp</ShortFile>
+    <Line>74</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</File>
+    <CodePrev>583797365</CodePrev>
+    <CodeCurrent>43375479</CodeCurrent>
+    <CodeNext>123</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-6-6-4</SAST>
+    <Positions>
+      <Position lines="74,97,102">C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>42</DefaultOrder>
+    <ErrorCode>V2547</ErrorCode>
+    <Message>The return value of non-void function 'closesocket' should be used.</Message>
+    <Project>Plane Project Client</Project>
+    <ShortFile>main.cpp</ShortFile>
+    <Line>119</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</File>
+    <CodePrev>1781364416</CodePrev>
+    <CodeCurrent>35829249</CodeCurrent>
+    <CodeNext>177847119</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-0-1-7</SAST>
+    <Positions>
+      <Position lines="119">C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>43</DefaultOrder>
+    <ErrorCode>V2547</ErrorCode>
+    <Message>The return value of non-void function 'WSACleanup' should be used.</Message>
+    <Project>Plane Project Client</Project>
+    <ShortFile>main.cpp</ShortFile>
+    <Line>175</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</File>
+    <CodePrev>4202168732</CodePrev>
+    <CodeCurrent>402713</CodeCurrent>
+    <CodeNext>4078831732</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-0-1-7</SAST>
+    <Positions>
+      <Position lines="175">C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>44</DefaultOrder>
+    <ErrorCode>V2547</ErrorCode>
+    <Message>The return value of non-void function 'inet_pton' should be used.</Message>
+    <Project>Plane Project Client</Project>
+    <ShortFile>main.cpp</ShortFile>
+    <Line>181</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</File>
+    <CodePrev>3362410226</CodePrev>
+    <CodeCurrent>1428470405</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-0-1-7</SAST>
+    <Positions>
+      <Position lines="181">C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>45</DefaultOrder>
+    <ErrorCode>V2547</ErrorCode>
+    <Message>The return value of non-void function 'getline' should be used.</Message>
+    <Project>Plane Project Client</Project>
+    <ShortFile>main.cpp</ShortFile>
+    <Line>204</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</File>
+    <CodePrev>5636743</CodePrev>
+    <CodeCurrent>1857635476</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-0-1-7</SAST>
+    <Positions>
+      <Position lines="204">C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>46</DefaultOrder>
+    <ErrorCode>V2547</ErrorCode>
+    <Message>The return value of non-void function 'shutdown' should be used.</Message>
+    <Project>Plane Project Client</Project>
+    <ShortFile>main.cpp</ShortFile>
+    <Line>210</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</File>
+    <CodePrev>3995956889</CodePrev>
+    <CodeCurrent>4286693476</CodeCurrent>
+    <CodeNext>2686912900</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-0-1-7</SAST>
+    <Positions>
+      <Position lines="210">C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>47</DefaultOrder>
+    <ErrorCode>V2547</ErrorCode>
+    <Message>The return value of non-void function 'getline' should be used.</Message>
+    <Project>Plane Project Client</Project>
+    <ShortFile>main.cpp</ShortFile>
+    <Line>230</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</File>
+    <CodePrev>90185239</CodePrev>
+    <CodeCurrent>3952354407</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-0-1-7</SAST>
+    <Positions>
+      <Position lines="230">C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>48</DefaultOrder>
+    <ErrorCode>V2547</ErrorCode>
+    <Message>The return value of non-void function 'WSACleanup' should be used.</Message>
+    <Project>Plane Project Client</Project>
+    <ShortFile>main.cpp</ShortFile>
+    <Line>241</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>402713</CodeCurrent>
+    <CodeNext>1158408886</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-0-1-7</SAST>
+    <Positions>
+      <Position lines="241">C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>49</DefaultOrder>
+    <ErrorCode>V2506</ErrorCode>
+    <Message>A function should have a single point of exit at the end.</Message>
+    <Project>Plane Project Client</Project>
+    <ShortFile>main.cpp</ShortFile>
+    <Line>124</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2779438593</CodeCurrent>
+    <CodeNext>1593345</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-6-6-5</SAST>
+    <Positions>
+      <Position lines="124,141,176,242">C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>50</DefaultOrder>
+    <ErrorCode>V2575</ErrorCode>
+    <Message>The global namespace should only contain 'main', namespace declarations and extern 'C' declaration.</Message>
+    <Project>Plane Project Client</Project>
+    <ShortFile>main.cpp</ShortFile>
+    <Line>108</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</File>
+    <CodePrev>1775996567</CodePrev>
+    <CodeCurrent>27207058</CodeCurrent>
+    <CodeNext>90632195</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-7-3-1</SAST>
+    <Positions>
+      <Position lines="108">C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>51</DefaultOrder>
+    <ErrorCode>V2575</ErrorCode>
+    <Message>The global namespace should only contain 'main', namespace declarations and extern 'C' declaration.</Message>
+    <Project>Plane Project Client</Project>
+    <ShortFile>main.cpp</ShortFile>
+    <Line>14</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</File>
+    <CodePrev>289914394</CodePrev>
+    <CodeCurrent>328585043</CodeCurrent>
+    <CodeNext>696953545</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-7-3-1</SAST>
+    <Positions>
+      <Position lines="14">C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>52</DefaultOrder>
+    <ErrorCode>V2575</ErrorCode>
+    <Message>The global namespace should only contain 'main', namespace declarations and extern 'C' declaration.</Message>
+    <Project>Plane Project Client</Project>
+    <ShortFile>main.cpp</ShortFile>
+    <Line>15</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</File>
+    <CodePrev>328585043</CodePrev>
+    <CodeCurrent>696953545</CodeCurrent>
+    <CodeNext>1356613568</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-7-3-1</SAST>
+    <Positions>
+      <Position lines="15">C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>53</DefaultOrder>
+    <ErrorCode>V2575</ErrorCode>
+    <Message>The global namespace should only contain 'main', namespace declarations and extern 'C' declaration.</Message>
+    <Project>Plane Project Client</Project>
+    <ShortFile>main.cpp</ShortFile>
+    <Line>16</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</File>
+    <CodePrev>696953545</CodePrev>
+    <CodeCurrent>1356613568</CodeCurrent>
+    <CodeNext>1144494446</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-7-3-1</SAST>
+    <Positions>
+      <Position lines="16">C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>54</DefaultOrder>
+    <ErrorCode>V2575</ErrorCode>
+    <Message>The global namespace should only contain 'main', namespace declarations and extern 'C' declaration.</Message>
+    <Project>Plane Project Client</Project>
+    <ShortFile>main.cpp</ShortFile>
+    <Line>22</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</File>
+    <CodePrev>1324795767</CodePrev>
+    <CodeCurrent>2918599439</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-7-3-1</SAST>
+    <Positions>
+      <Position lines="22">C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>55</DefaultOrder>
+    <ErrorCode>V2575</ErrorCode>
+    <Message>The global namespace should only contain 'main', namespace declarations and extern 'C' declaration.</Message>
+    <Project>Plane Project Client</Project>
+    <ShortFile>main.cpp</ShortFile>
+    <Line>13</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>289914394</CodeCurrent>
+    <CodeNext>328585043</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-7-3-1</SAST>
+    <Positions>
+      <Position lines="13">C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>56</DefaultOrder>
+    <ErrorCode>V2575</ErrorCode>
+    <Message>The global namespace should only contain 'main', namespace declarations and extern 'C' declaration.</Message>
+    <Project>Plane Project Client</Project>
+    <ShortFile>main.cpp</ShortFile>
+    <Line>17</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</File>
+    <CodePrev>1356613568</CodePrev>
+    <CodeCurrent>1144494446</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-7-3-1</SAST>
+    <Positions>
+      <Position lines="17">C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>57</DefaultOrder>
+    <ErrorCode>V2575</ErrorCode>
+    <Message>The global namespace should only contain 'main', namespace declarations and extern 'C' declaration.</Message>
+    <Project>Plane Project Client</Project>
+    <ShortFile>main.cpp</ShortFile>
+    <Line>21</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>1324795767</CodeCurrent>
+    <CodeNext>2918599439</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-7-3-1</SAST>
+    <Positions>
+      <Position lines="21">C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>58</DefaultOrder>
+    <ErrorCode>V2575</ErrorCode>
+    <Message>The global namespace should only contain 'main', namespace declarations and extern 'C' declaration.</Message>
+    <Project>Plane Project Client</Project>
+    <ShortFile>main.cpp</ShortFile>
+    <Line>24</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>18503401</CodeCurrent>
+    <CodeNext>52720</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-7-3-1</SAST>
+    <Positions>
+      <Position lines="24">C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>59</DefaultOrder>
+    <ErrorCode>V2575</ErrorCode>
+    <Message>The global namespace should only contain 'main', namespace declarations and extern 'C' declaration.</Message>
+    <Project>Plane Project Client</Project>
+    <ShortFile>main.cpp</ShortFile>
+    <Line>34</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</File>
+    <CodePrev>415122412</CodePrev>
+    <CodeCurrent>1147436446</CodeCurrent>
+    <CodeNext>86750869</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-7-3-1</SAST>
+    <Positions>
+      <Position lines="34">C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>60</DefaultOrder>
+    <ErrorCode>V2575</ErrorCode>
+    <Message>The global namespace should only contain 'main', namespace declarations and extern 'C' declaration.</Message>
+    <Project>Plane Project Client</Project>
+    <ShortFile>main.cpp</ShortFile>
+    <Line>72</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</File>
+    <CodePrev>4130567179</CodePrev>
+    <CodeCurrent>3663329636</CodeCurrent>
+    <CodeNext>583797365</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-7-3-1</SAST>
+    <Positions>
+      <Position lines="72">C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>61</DefaultOrder>
+    <ErrorCode>V2575</ErrorCode>
+    <Message>The global namespace should only contain 'main', namespace declarations and extern 'C' declaration.</Message>
+    <Project>Plane Project Client</Project>
+    <ShortFile>main.cpp</ShortFile>
+    <Line>117</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</File>
+    <CodePrev>281567317</CodePrev>
+    <CodeCurrent>1374226</CodeCurrent>
+    <CodeNext>1781364416</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>7</Analyzer>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <SAST>MISRA-CPP-7-3-1</SAST>
+    <Positions>
+      <Position lines="117">C:\Users\liamm\Desktop\steve\Plane Project Client\main.cpp</Position>
+    </Positions>
+  </PVS-Studio_Analysis_Log>
+</NewDataSet>

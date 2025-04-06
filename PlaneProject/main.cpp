@@ -29,7 +29,7 @@ void handleCommandMenu(GroundTower& tower) {
 
     int choice;
     cin >> choice;
-    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Clear input buffer
+    (void)cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Clear input buffer
 
     if (choice < 0 || choice > 6) {
         cout << "Invalid option. Please try again.\n";
@@ -42,7 +42,6 @@ void handleCommandMenu(GroundTower& tower) {
 
     // Common variable for command handling
     string aircraftID;
-    string customMessage;
     bool isBroadcast = false;
     bool success = false;
     int cmdSent = 0;
@@ -73,14 +72,14 @@ void handleCommandMenu(GroundTower& tower) {
     cout << "Send to (1) all aircraft or (2) specific aircraft? Enter choice: ";
     int sendOption;
     cin >> sendOption;
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    (void)cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
     if (sendOption == 1) {
         isBroadcast = true;
     }
     else if (sendOption == 2) {
         cout << "Enter aircraft ID: ";
-        getline(cin, aircraftID);
+        (void)getline(cin, aircraftID);
     }
     else {
         cout << "Invalid option. Command canceled.\n";
@@ -126,7 +125,7 @@ int main() {
 
     string input;
     while (true) {
-        getline(cin, input);
+        (void)getline(cin, input);
 
         if (input == "q" || input == "Q") {
             break;  // Break the loop == exit the program

@@ -99,7 +99,7 @@ namespace PlaneSystem {
         m_isListening = false;
 
         if (m_server_fd != INVALID_SOCKET) {
-            closesocket(m_server_fd);
+            (void)closesocket(m_server_fd);
             m_server_fd = INVALID_SOCKET;
         }
 
@@ -123,7 +123,7 @@ namespace PlaneSystem {
             reinterpret_cast<struct sockaddr*>(&serverAddress),
             sizeof(serverAddress)) == SOCKET_ERROR) {
             std::cerr << "Bind failed: " << WSAGetLastError() << "\n";
-            closesocket(m_server_fd);
+            (void)closesocket(m_server_fd);
             m_server_fd = INVALID_SOCKET;
             m_isListening = false;
             return;
@@ -132,7 +132,7 @@ namespace PlaneSystem {
         // Listen for incoming connections
         if (listen(m_server_fd, SOMAXCONN) == SOCKET_ERROR) {
             std::cerr << "Listen failed: " << WSAGetLastError() << "\n";
-            closesocket(m_server_fd);
+            (void)closesocket(m_server_fd);
             m_server_fd = INVALID_SOCKET;
             m_isListening = false;
             return;
@@ -175,7 +175,7 @@ namespace PlaneSystem {
 
         while (m_isListening) {
             // Clear buffer before receiving
-            std::memset(buffer, 0, bufferSize);
+            (void)std::memset(buffer, 0, bufferSize);
 
             // Receive data from aircraft
             int bytesReceived = recv(clientSocket, buffer, bufferSize - 1, 0);
@@ -241,7 +241,7 @@ namespace PlaneSystem {
                 // Remove from socket map
                 if (!aircraftID.empty()) {
                     std::lock_guard<std::mutex> lock(m_aircraftMutex);
-                    m_aircraftSockets.erase(aircraftID);
+                    (void)m_aircraftSockets.erase(aircraftID);
                 }
 
                 break;
@@ -253,14 +253,14 @@ namespace PlaneSystem {
                 // Remove from socket map
                 if (!aircraftID.empty()) {
                     std::lock_guard<std::mutex> lock(m_aircraftMutex);
-                    m_aircraftSockets.erase(aircraftID);
+                    (void)m_aircraftSockets.erase(aircraftID);
                 }
 
                 break;
             }
         }
 
-        closesocket(clientSocket);
+        (void)closesocket(clientSocket);
     }
 
     // Parse a message from an aircraft
@@ -346,7 +346,7 @@ namespace PlaneSystem {
         auto now_c = std::chrono::system_clock::to_time_t(now);
 
         std::tm now_tm;
-        localtime_s(&now_tm, &now_c);
+        (void)localtime_s(&now_tm, &now_c);
 
         std::stringstream ss;
         ss << std::put_time(&now_tm, "%Y-%m-%d %H:%M:%S");

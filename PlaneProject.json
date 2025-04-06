@@ -1,0 +1,1699 @@
+{
+  "version": 3,
+  "warnings": [
+    {
+      "code": "V2506",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-6-6-5",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\ServerHeader.cpp",
+          "line": 6,
+          "endLine": 6,
+          "navigation": {
+            "previousLine": 0,
+            "currentLine": 1320271428,
+            "nextLine": 1593345,
+            "columns": 0
+          }
+        },
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\ServerHeader.cpp",
+          "line": 11,
+          "endLine": 11
+        },
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\ServerHeader.cpp",
+          "line": 13,
+          "endLine": 13
+        }
+      ],
+      "projects": [
+        "PlaneProject"
+      ],
+      "message": "A function should have a single point of exit at the end.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2547",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-0-1-7",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\ServerHeader.cpp",
+          "line": 17,
+          "endLine": 17,
+          "navigation": {
+            "previousLine": 42467417,
+            "currentLine": 402713,
+            "nextLine": 125,
+            "columns": 0
+          }
+        }
+      ],
+      "projects": [
+        "PlaneProject"
+      ],
+      "message": "The return value of non-void function 'WSACleanup' should be used.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2506",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-6-6-5",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\GroundTower.cpp",
+          "line": 66,
+          "endLine": 66,
+          "navigation": {
+            "previousLine": -1218314246,
+            "currentLine": 1845966843,
+            "nextLine": 11801557,
+            "columns": 0
+          }
+        },
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\GroundTower.cpp",
+          "line": 69,
+          "endLine": 69
+        },
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\GroundTower.cpp",
+          "line": 75,
+          "endLine": 75
+        },
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\GroundTower.cpp",
+          "line": 83,
+          "endLine": 83
+        },
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\GroundTower.cpp",
+          "line": 90,
+          "endLine": 90
+        }
+      ],
+      "projects": [
+        "PlaneProject"
+      ],
+      "message": "A function should have a single point of exit at the end.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2547",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-0-1-7",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\GroundTower.cpp",
+          "line": 102,
+          "endLine": 102,
+          "navigation": {
+            "previousLine": 1997895404,
+            "currentLine": 1146550073,
+            "nextLine": 1574419278,
+            "columns": 0
+          }
+        }
+      ],
+      "projects": [
+        "PlaneProject"
+      ],
+      "message": "The return value of non-void function 'closesocket' should be used.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2506",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-6-6-5",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\GroundTower.cpp",
+          "line": 94,
+          "endLine": 94,
+          "navigation": {
+            "previousLine": -1218315949,
+            "currentLine": -1224534240,
+            "nextLine": 21271509,
+            "columns": 0
+          }
+        },
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\GroundTower.cpp",
+          "line": 96,
+          "endLine": 96
+        }
+      ],
+      "projects": [
+        "PlaneProject"
+      ],
+      "message": "The 'return' statement should be the last statement of a function.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2547",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-0-1-7",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\GroundTower.cpp",
+          "line": 126,
+          "endLine": 126,
+          "navigation": {
+            "previousLine": 1301622590,
+            "currentLine": 1146550073,
+            "nextLine": 1574419278,
+            "columns": 0
+          }
+        }
+      ],
+      "projects": [
+        "PlaneProject"
+      ],
+      "message": "The return value of non-void function 'closesocket' should be used.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2547",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-0-1-7",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\GroundTower.cpp",
+          "line": 135,
+          "endLine": 135,
+          "navigation": {
+            "previousLine": 1334816894,
+            "currentLine": 1146550073,
+            "nextLine": 1574419278,
+            "columns": 0
+          }
+        }
+      ],
+      "projects": [
+        "PlaneProject"
+      ],
+      "message": "The return value of non-void function 'closesocket' should be used.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2506",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-6-6-5",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\GroundTower.cpp",
+          "line": 115,
+          "endLine": 115,
+          "navigation": {
+            "previousLine": 1009384216,
+            "currentLine": 1905468786,
+            "nextLine": -115412978,
+            "columns": 0
+          }
+        },
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\GroundTower.cpp",
+          "line": 129,
+          "endLine": 129
+        },
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\GroundTower.cpp",
+          "line": 138,
+          "endLine": 138
+        }
+      ],
+      "projects": [
+        "PlaneProject"
+      ],
+      "message": "A function should have a single point of exit at the end.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2578",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-5-2-12",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\GroundTower.cpp",
+          "line": 178,
+          "endLine": 178,
+          "navigation": {
+            "previousLine": 235956958,
+            "currentLine": -1693610357,
+            "nextLine": 0,
+            "columns": 0
+          }
+        }
+      ],
+      "projects": [
+        "PlaneProject"
+      ],
+      "message": "The 'buffer' array should not decay to a pointer.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2547",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-0-1-7",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\GroundTower.cpp",
+          "line": 178,
+          "endLine": 178,
+          "navigation": {
+            "previousLine": 235956958,
+            "currentLine": -1693610357,
+            "nextLine": 0,
+            "columns": 0
+          }
+        }
+      ],
+      "projects": [
+        "PlaneProject"
+      ],
+      "message": "The return value of non-void function 'memset' should be used.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2578",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-5-2-12",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\GroundTower.cpp",
+          "line": 181,
+          "endLine": 181,
+          "navigation": {
+            "previousLine": 615889692,
+            "currentLine": 183367682,
+            "nextLine": 0,
+            "columns": 0
+          }
+        }
+      ],
+      "projects": [
+        "PlaneProject"
+      ],
+      "message": "The 'buffer' array should not decay to a pointer.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2547",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-0-1-7",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\GroundTower.cpp",
+          "line": 244,
+          "endLine": 244,
+          "navigation": {
+            "previousLine": -351257633,
+            "currentLine": -1709678491,
+            "nextLine": 125,
+            "columns": 0
+          }
+        }
+      ],
+      "projects": [
+        "PlaneProject"
+      ],
+      "message": "The return value of non-void function 'erase' should be used.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2547",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-0-1-7",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\GroundTower.cpp",
+          "line": 256,
+          "endLine": 256,
+          "navigation": {
+            "previousLine": -351257633,
+            "currentLine": -1709678491,
+            "nextLine": 125,
+            "columns": 0
+          }
+        }
+      ],
+      "projects": [
+        "PlaneProject"
+      ],
+      "message": "The return value of non-void function 'erase' should be used.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2547",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-0-1-7",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\GroundTower.cpp",
+          "line": 263,
+          "endLine": 263,
+          "navigation": {
+            "previousLine": 0,
+            "currentLine": -2001736191,
+            "nextLine": 125,
+            "columns": 0
+          }
+        }
+      ],
+      "projects": [
+        "PlaneProject"
+      ],
+      "message": "The return value of non-void function 'closesocket' should be used.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2530",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-6-6-4",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\GroundTower.cpp",
+          "line": 176,
+          "endLine": 176,
+          "navigation": {
+            "previousLine": 0,
+            "currentLine": 86578133,
+            "nextLine": 235956958,
+            "columns": 0
+          }
+        },
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\GroundTower.cpp",
+          "line": 231,
+          "endLine": 231
+        },
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\GroundTower.cpp",
+          "line": 247,
+          "endLine": 247
+        },
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\GroundTower.cpp",
+          "line": 259,
+          "endLine": 259
+        }
+      ],
+      "projects": [
+        "PlaneProject"
+      ],
+      "message": "The loop should be terminated with no more than one 'break' or 'goto' statement.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2547",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-0-1-7",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\GroundTower.cpp",
+          "line": 349,
+          "endLine": 349,
+          "navigation": {
+            "previousLine": 707673,
+            "currentLine": 1500237583,
+            "nextLine": 0,
+            "columns": 0
+          }
+        }
+      ],
+      "projects": [
+        "PlaneProject"
+      ],
+      "message": "The return value of non-void function 'localtime_s' should be used.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2578",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-5-2-12",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\GroundTower.cpp",
+          "line": 352,
+          "endLine": 352,
+          "navigation": {
+            "previousLine": 45089609,
+            "currentLine": -33635078,
+            "nextLine": 1415033,
+            "columns": 0
+          }
+        }
+      ],
+      "projects": [
+        "PlaneProject"
+      ],
+      "message": "The string literal should not decay to a pointer to char. Consider inspecting the second function argument.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2506",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-6-6-5",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\GroundTower.cpp",
+          "line": 375,
+          "endLine": 375,
+          "navigation": {
+            "previousLine": 1670075061,
+            "currentLine": -1982513259,
+            "nextLine": -351257633,
+            "columns": 0
+          }
+        },
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\GroundTower.cpp",
+          "line": 381,
+          "endLine": 381
+        }
+      ],
+      "projects": [
+        "PlaneProject"
+      ],
+      "message": "The 'return' statement should be the last statement of a function.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2520",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-6-4-5",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\GroundTower.cpp",
+          "line": 415,
+          "endLine": 415,
+          "navigation": {
+            "previousLine": 1818057499,
+            "currentLine": 46720557,
+            "nextLine": 1637846211,
+            "columns": 0
+          }
+        },
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\GroundTower.cpp",
+          "line": 436,
+          "endLine": 436
+        }
+      ],
+      "projects": [
+        "PlaneProject"
+      ],
+      "message": "Every switch-clause should be terminated by an unconditional 'break' or 'throw' statement.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V614",
+      "cwe": 457,
+      "sastId": "CERT-EXP53-CPP",
+      "level": 2,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\GroundTower.cpp",
+          "line": 442,
+          "endLine": 442,
+          "navigation": {
+            "previousLine": 1192740,
+            "currentLine": -314142698,
+            "nextLine": 1589459907,
+            "columns": 0
+          }
+        }
+      ],
+      "projects": [
+        "PlaneProject"
+      ],
+      "message": "Potentially uninitialized variable 'clientSocket' used. Consider checking the first actual argument of the 'send' function.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2538",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-8-5-1",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\GroundTower.cpp",
+          "line": 442,
+          "endLine": 442,
+          "navigation": {
+            "previousLine": 1192740,
+            "currentLine": -314142698,
+            "nextLine": 1589459907,
+            "columns": 0
+          }
+        }
+      ],
+      "projects": [
+        "PlaneProject"
+      ],
+      "message": "The value of uninitialized variable 'clientSocket' should not be used. Consider checking the first actual argument of the 'send' function.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2506",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-6-6-5",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\GroundTower.cpp",
+          "line": 391,
+          "endLine": 391,
+          "navigation": {
+            "previousLine": 1213255708,
+            "currentLine": 659944426,
+            "nextLine": 27997967,
+            "columns": 0
+          }
+        },
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\GroundTower.cpp",
+          "line": 407,
+          "endLine": 407
+        },
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\GroundTower.cpp",
+          "line": 438,
+          "endLine": 438
+        },
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\GroundTower.cpp",
+          "line": 444,
+          "endLine": 444
+        },
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\GroundTower.cpp",
+          "line": 451,
+          "endLine": 451
+        }
+      ],
+      "projects": [
+        "PlaneProject"
+      ],
+      "message": "A function should have a single point of exit at the end.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2506",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-6-6-5",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\GroundTower.cpp",
+          "line": 455,
+          "endLine": 455,
+          "navigation": {
+            "previousLine": -1017711425,
+            "currentLine": 500847280,
+            "nextLine": -16514825,
+            "columns": 0
+          }
+        },
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\GroundTower.cpp",
+          "line": 462,
+          "endLine": 462
+        },
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\GroundTower.cpp",
+          "line": 481,
+          "endLine": 481
+        }
+      ],
+      "projects": [
+        "PlaneProject"
+      ],
+      "message": "A function should have a single point of exit at the end.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2575",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-7-3-1",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\main.cpp",
+          "line": 16,
+          "endLine": 16,
+          "navigation": {
+            "previousLine": 0,
+            "currentLine": 12463563,
+            "nextLine": -1104363387,
+            "columns": 0
+          }
+        }
+      ],
+      "projects": [
+        "PlaneProject"
+      ],
+      "message": "The global namespace should only contain 'main', namespace declarations and extern 'C' declaration.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2575",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-7-3-1",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\main.cpp",
+          "line": 17,
+          "endLine": 17,
+          "navigation": {
+            "previousLine": 12463563,
+            "currentLine": -1104363387,
+            "nextLine": 0,
+            "columns": 0
+          }
+        }
+      ],
+      "projects": [
+        "PlaneProject"
+      ],
+      "message": "The global namespace should only contain 'main', namespace declarations and extern 'C' declaration.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2547",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-0-1-7",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\main.cpp",
+          "line": 32,
+          "endLine": 32,
+          "navigation": {
+            "previousLine": 151557,
+            "currentLine": -533240245,
+            "nextLine": 0,
+            "columns": 0
+          }
+        }
+      ],
+      "projects": [
+        "PlaneProject"
+      ],
+      "message": "The return value of non-void function 'ignore' should be used.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2520",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-6-4-5",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\main.cpp",
+          "line": 52,
+          "endLine": 52,
+          "navigation": {
+            "previousLine": -1857757254,
+            "currentLine": 1459797,
+            "nextLine": 2084,
+            "columns": 0
+          }
+        },
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\main.cpp",
+          "line": 68,
+          "endLine": 68
+        }
+      ],
+      "projects": [
+        "PlaneProject"
+      ],
+      "message": "Every switch-clause should be terminated by an unconditional 'break' or 'throw' statement.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2547",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-0-1-7",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\main.cpp",
+          "line": 76,
+          "endLine": 76,
+          "navigation": {
+            "previousLine": 2445971,
+            "currentLine": 942864413,
+            "nextLine": 0,
+            "columns": 0
+          }
+        }
+      ],
+      "projects": [
+        "PlaneProject"
+      ],
+      "message": "The return value of non-void function 'ignore' should be used.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2547",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-0-1-7",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\main.cpp",
+          "line": 83,
+          "endLine": 83,
+          "navigation": {
+            "previousLine": 1160054183,
+            "currentLine": 548717297,
+            "nextLine": 125,
+            "columns": 0
+          }
+        }
+      ],
+      "projects": [
+        "PlaneProject"
+      ],
+      "message": "The return value of non-void function 'getline' should be used.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V808",
+      "cwe": 0,
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\main.cpp",
+          "line": 45,
+          "endLine": 45,
+          "navigation": {
+            "previousLine": 6060407,
+            "currentLine": 48381941,
+            "nextLine": 149770445,
+            "columns": 0
+          }
+        }
+      ],
+      "projects": [
+        "PlaneProject"
+      ],
+      "message": "'customMessage' object of 'basic_string' type was created but was not utilized.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2551",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-3-4-1",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\main.cpp",
+          "line": 47,
+          "endLine": 47,
+          "navigation": {
+            "previousLine": 149770445,
+            "currentLine": 9216845,
+            "nextLine": 308367,
+            "columns": 0
+          }
+        },
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\main.cpp",
+          "line": 100,
+          "endLine": 100
+        }
+      ],
+      "projects": [
+        "PlaneProject"
+      ],
+      "message": "The 'success' variable should be declared in a scope that minimizes its visibility.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2551",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-3-4-1",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\main.cpp",
+          "line": 48,
+          "endLine": 48,
+          "navigation": {
+            "previousLine": 9216845,
+            "currentLine": 308367,
+            "nextLine": -1201037106,
+            "columns": 0
+          }
+        },
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\main.cpp",
+          "line": 91,
+          "endLine": 91
+        }
+      ],
+      "projects": [
+        "PlaneProject"
+      ],
+      "message": "The 'cmdSent' variable should be declared in a scope that minimizes its visibility.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2506",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-6-6-5",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\main.cpp",
+          "line": 19,
+          "endLine": 19,
+          "navigation": {
+            "previousLine": 0,
+            "currentLine": 296585638,
+            "nextLine": 0,
+            "columns": 0
+          }
+        },
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\main.cpp",
+          "line": 36,
+          "endLine": 36
+        },
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\main.cpp",
+          "line": 40,
+          "endLine": 40
+        },
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\main.cpp",
+          "line": 69,
+          "endLine": 69
+        },
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\main.cpp",
+          "line": 87,
+          "endLine": 87
+        }
+      ],
+      "projects": [
+        "PlaneProject"
+      ],
+      "message": "A function should have a single point of exit at the end.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2547",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-0-1-7",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\main.cpp",
+          "line": 129,
+          "endLine": 129,
+          "navigation": {
+            "previousLine": 169269,
+            "currentLine": 17147025,
+            "nextLine": 0,
+            "columns": 0
+          }
+        }
+      ],
+      "projects": [
+        "PlaneProject"
+      ],
+      "message": "The return value of non-void function 'getline' should be used.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2506",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-6-6-5",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\main.cpp",
+          "line": 111,
+          "endLine": 111,
+          "navigation": {
+            "previousLine": 0,
+            "currentLine": 37897,
+            "nextLine": -1331537519,
+            "columns": 0
+          }
+        },
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\main.cpp",
+          "line": 118,
+          "endLine": 118
+        },
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\main.cpp",
+          "line": 157,
+          "endLine": 157
+        }
+      ],
+      "projects": [
+        "PlaneProject"
+      ],
+      "message": "A function should have a single point of exit at the end.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2575",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-7-3-1",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\PlaneProject\\main.cpp",
+          "line": 19,
+          "endLine": 19,
+          "navigation": {
+            "previousLine": 0,
+            "currentLine": 296585638,
+            "nextLine": 0,
+            "columns": 0
+          }
+        }
+      ],
+      "projects": [
+        "PlaneProject"
+      ],
+      "message": "The global namespace should only contain 'main', namespace declarations and extern 'C' declaration.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2575",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-7-3-1",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\Plane Project Client\\main.cpp",
+          "line": 19,
+          "endLine": 19,
+          "navigation": {
+            "previousLine": 0,
+            "currentLine": -1104363387,
+            "nextLine": 0,
+            "columns": 0
+          }
+        }
+      ],
+      "projects": [
+        "Plane Project Client"
+      ],
+      "message": "The global namespace should only contain 'main', namespace declarations and extern 'C' declaration.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2578",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-5-2-12",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\Plane Project Client\\main.cpp",
+          "line": 77,
+          "endLine": 77,
+          "navigation": {
+            "previousLine": 137723258,
+            "currentLine": 907602480,
+            "nextLine": 0,
+            "columns": 0
+          }
+        }
+      ],
+      "projects": [
+        "Plane Project Client"
+      ],
+      "message": "The 'buffer' array should not decay to a pointer.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2547",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-0-1-7",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\Plane Project Client\\main.cpp",
+          "line": 77,
+          "endLine": 77,
+          "navigation": {
+            "previousLine": 137723258,
+            "currentLine": 907602480,
+            "nextLine": 0,
+            "columns": 0
+          }
+        }
+      ],
+      "projects": [
+        "Plane Project Client"
+      ],
+      "message": "The return value of non-void function 'memset' should be used.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2578",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-5-2-12",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\Plane Project Client\\main.cpp",
+          "line": 79,
+          "endLine": 79,
+          "navigation": {
+            "previousLine": 0,
+            "currentLine": 948535452,
+            "nextLine": 46896633,
+            "columns": 0
+          }
+        }
+      ],
+      "projects": [
+        "Plane Project Client"
+      ],
+      "message": "The 'buffer' array should not decay to a pointer.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2530",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-6-6-4",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\Plane Project Client\\main.cpp",
+          "line": 74,
+          "endLine": 74,
+          "navigation": {
+            "previousLine": 583797365,
+            "currentLine": 43375479,
+            "nextLine": 123,
+            "columns": 0
+          }
+        },
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\Plane Project Client\\main.cpp",
+          "line": 97,
+          "endLine": 97
+        },
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\Plane Project Client\\main.cpp",
+          "line": 102,
+          "endLine": 102
+        }
+      ],
+      "projects": [
+        "Plane Project Client"
+      ],
+      "message": "The loop should be terminated with no more than one 'break' or 'goto' statement.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2547",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-0-1-7",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\Plane Project Client\\main.cpp",
+          "line": 119,
+          "endLine": 119,
+          "navigation": {
+            "previousLine": 1781364416,
+            "currentLine": 35829249,
+            "nextLine": 177847119,
+            "columns": 0
+          }
+        }
+      ],
+      "projects": [
+        "Plane Project Client"
+      ],
+      "message": "The return value of non-void function 'closesocket' should be used.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2547",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-0-1-7",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\Plane Project Client\\main.cpp",
+          "line": 175,
+          "endLine": 175,
+          "navigation": {
+            "previousLine": -92798564,
+            "currentLine": 402713,
+            "nextLine": -216135564,
+            "columns": 0
+          }
+        }
+      ],
+      "projects": [
+        "Plane Project Client"
+      ],
+      "message": "The return value of non-void function 'WSACleanup' should be used.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2547",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-0-1-7",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\Plane Project Client\\main.cpp",
+          "line": 181,
+          "endLine": 181,
+          "navigation": {
+            "previousLine": -932557070,
+            "currentLine": 1428470405,
+            "nextLine": 0,
+            "columns": 0
+          }
+        }
+      ],
+      "projects": [
+        "Plane Project Client"
+      ],
+      "message": "The return value of non-void function 'inet_pton' should be used.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2547",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-0-1-7",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\Plane Project Client\\main.cpp",
+          "line": 204,
+          "endLine": 204,
+          "navigation": {
+            "previousLine": 5636743,
+            "currentLine": 1857635476,
+            "nextLine": 0,
+            "columns": 0
+          }
+        }
+      ],
+      "projects": [
+        "Plane Project Client"
+      ],
+      "message": "The return value of non-void function 'getline' should be used.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2547",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-0-1-7",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\Plane Project Client\\main.cpp",
+          "line": 210,
+          "endLine": 210,
+          "navigation": {
+            "previousLine": -299010407,
+            "currentLine": -8273820,
+            "nextLine": -1608054396,
+            "columns": 0
+          }
+        }
+      ],
+      "projects": [
+        "Plane Project Client"
+      ],
+      "message": "The return value of non-void function 'shutdown' should be used.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2547",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-0-1-7",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\Plane Project Client\\main.cpp",
+          "line": 230,
+          "endLine": 230,
+          "navigation": {
+            "previousLine": 90185239,
+            "currentLine": -342612889,
+            "nextLine": 0,
+            "columns": 0
+          }
+        }
+      ],
+      "projects": [
+        "Plane Project Client"
+      ],
+      "message": "The return value of non-void function 'getline' should be used.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2547",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-0-1-7",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\Plane Project Client\\main.cpp",
+          "line": 241,
+          "endLine": 241,
+          "navigation": {
+            "previousLine": 0,
+            "currentLine": 402713,
+            "nextLine": 1158408886,
+            "columns": 0
+          }
+        }
+      ],
+      "projects": [
+        "Plane Project Client"
+      ],
+      "message": "The return value of non-void function 'WSACleanup' should be used.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2506",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-6-6-5",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\Plane Project Client\\main.cpp",
+          "line": 124,
+          "endLine": 124,
+          "navigation": {
+            "previousLine": 0,
+            "currentLine": -1515528703,
+            "nextLine": 1593345,
+            "columns": 0
+          }
+        },
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\Plane Project Client\\main.cpp",
+          "line": 141,
+          "endLine": 141
+        },
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\Plane Project Client\\main.cpp",
+          "line": 176,
+          "endLine": 176
+        },
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\Plane Project Client\\main.cpp",
+          "line": 242,
+          "endLine": 242
+        }
+      ],
+      "projects": [
+        "Plane Project Client"
+      ],
+      "message": "A function should have a single point of exit at the end.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2575",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-7-3-1",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\Plane Project Client\\main.cpp",
+          "line": 108,
+          "endLine": 108,
+          "navigation": {
+            "previousLine": 1775996567,
+            "currentLine": 27207058,
+            "nextLine": 90632195,
+            "columns": 0
+          }
+        }
+      ],
+      "projects": [
+        "Plane Project Client"
+      ],
+      "message": "The global namespace should only contain 'main', namespace declarations and extern 'C' declaration.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2575",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-7-3-1",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\Plane Project Client\\main.cpp",
+          "line": 14,
+          "endLine": 14,
+          "navigation": {
+            "previousLine": 289914394,
+            "currentLine": 328585043,
+            "nextLine": 696953545,
+            "columns": 0
+          }
+        }
+      ],
+      "projects": [
+        "Plane Project Client"
+      ],
+      "message": "The global namespace should only contain 'main', namespace declarations and extern 'C' declaration.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2575",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-7-3-1",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\Plane Project Client\\main.cpp",
+          "line": 15,
+          "endLine": 15,
+          "navigation": {
+            "previousLine": 328585043,
+            "currentLine": 696953545,
+            "nextLine": 1356613568,
+            "columns": 0
+          }
+        }
+      ],
+      "projects": [
+        "Plane Project Client"
+      ],
+      "message": "The global namespace should only contain 'main', namespace declarations and extern 'C' declaration.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2575",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-7-3-1",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\Plane Project Client\\main.cpp",
+          "line": 16,
+          "endLine": 16,
+          "navigation": {
+            "previousLine": 696953545,
+            "currentLine": 1356613568,
+            "nextLine": 1144494446,
+            "columns": 0
+          }
+        }
+      ],
+      "projects": [
+        "Plane Project Client"
+      ],
+      "message": "The global namespace should only contain 'main', namespace declarations and extern 'C' declaration.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2575",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-7-3-1",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\Plane Project Client\\main.cpp",
+          "line": 22,
+          "endLine": 22,
+          "navigation": {
+            "previousLine": 1324795767,
+            "currentLine": -1376367857,
+            "nextLine": 0,
+            "columns": 0
+          }
+        }
+      ],
+      "projects": [
+        "Plane Project Client"
+      ],
+      "message": "The global namespace should only contain 'main', namespace declarations and extern 'C' declaration.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2575",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-7-3-1",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\Plane Project Client\\main.cpp",
+          "line": 13,
+          "endLine": 13,
+          "navigation": {
+            "previousLine": 0,
+            "currentLine": 289914394,
+            "nextLine": 328585043,
+            "columns": 0
+          }
+        }
+      ],
+      "projects": [
+        "Plane Project Client"
+      ],
+      "message": "The global namespace should only contain 'main', namespace declarations and extern 'C' declaration.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2575",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-7-3-1",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\Plane Project Client\\main.cpp",
+          "line": 17,
+          "endLine": 17,
+          "navigation": {
+            "previousLine": 1356613568,
+            "currentLine": 1144494446,
+            "nextLine": 0,
+            "columns": 0
+          }
+        }
+      ],
+      "projects": [
+        "Plane Project Client"
+      ],
+      "message": "The global namespace should only contain 'main', namespace declarations and extern 'C' declaration.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2575",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-7-3-1",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\Plane Project Client\\main.cpp",
+          "line": 21,
+          "endLine": 21,
+          "navigation": {
+            "previousLine": 0,
+            "currentLine": 1324795767,
+            "nextLine": -1376367857,
+            "columns": 0
+          }
+        }
+      ],
+      "projects": [
+        "Plane Project Client"
+      ],
+      "message": "The global namespace should only contain 'main', namespace declarations and extern 'C' declaration.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2575",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-7-3-1",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\Plane Project Client\\main.cpp",
+          "line": 24,
+          "endLine": 24,
+          "navigation": {
+            "previousLine": 0,
+            "currentLine": 18503401,
+            "nextLine": 52720,
+            "columns": 0
+          }
+        }
+      ],
+      "projects": [
+        "Plane Project Client"
+      ],
+      "message": "The global namespace should only contain 'main', namespace declarations and extern 'C' declaration.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2575",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-7-3-1",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\Plane Project Client\\main.cpp",
+          "line": 34,
+          "endLine": 34,
+          "navigation": {
+            "previousLine": 415122412,
+            "currentLine": 1147436446,
+            "nextLine": 86750869,
+            "columns": 0
+          }
+        }
+      ],
+      "projects": [
+        "Plane Project Client"
+      ],
+      "message": "The global namespace should only contain 'main', namespace declarations and extern 'C' declaration.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2575",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-7-3-1",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\Plane Project Client\\main.cpp",
+          "line": 72,
+          "endLine": 72,
+          "navigation": {
+            "previousLine": -164400117,
+            "currentLine": -631637660,
+            "nextLine": 583797365,
+            "columns": 0
+          }
+        }
+      ],
+      "projects": [
+        "Plane Project Client"
+      ],
+      "message": "The global namespace should only contain 'main', namespace declarations and extern 'C' declaration.",
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V2575",
+      "cwe": 0,
+      "sastId": "MISRA-CPP-7-3-1",
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\liamm\\Desktop\\steve\\Plane Project Client\\main.cpp",
+          "line": 117,
+          "endLine": 117,
+          "navigation": {
+            "previousLine": 281567317,
+            "currentLine": 1374226,
+            "nextLine": 1781364416,
+            "columns": 0
+          }
+        }
+      ],
+      "projects": [
+        "Plane Project Client"
+      ],
+      "message": "The global namespace should only contain 'main', namespace declarations and extern 'C' declaration.",
+      "favorite": false,
+      "falseAlarm": false
+    }
+  ]
+}
