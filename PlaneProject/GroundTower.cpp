@@ -167,6 +167,7 @@ namespace PlaneSystem {
 		const size_t bufferSize = 1024;     // Buffer size for incoming data
         char buffer[bufferSize] = { 0 };
         std::string aircraftID;
+        bool isFirstMessage = true; // determine if it is the first message sent to a client (aircraft)
 
         while (m_isListening) {
             // Clear buffer before receiving
@@ -219,8 +220,17 @@ namespace PlaneSystem {
                     UpdateAircraft(aircraft);
                 }
 
+                std::string response;
+
                 // Send response to the aircraft
-                std::string response = "Message received by " + m_towerName + " ground tower!";
+                if (isFirstMessage) {
+                    response = "Message received by " + m_towerName + " ground tower! Tower coordinates: " +std::to_string(m_latitude) + "," + std::to_string(m_longitude);
+                    isFirstMessage = false;
+                }
+                else {
+                    response = "Message received by " + m_towerName + " ground tower!";
+                }
+
                 if (send(clientSocket, response.c_str(), static_cast<int>(response.length()), 0) == SOCKET_ERROR) {
                     std::cerr << "Error sending response: " << WSAGetLastError() << "\n";
                     break;
