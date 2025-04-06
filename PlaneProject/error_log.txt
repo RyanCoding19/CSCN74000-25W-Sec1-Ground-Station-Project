@@ -8,3 +8,5 @@ Last known data - Lat: 40.7093, Lon: -74.0143, Alt: 10716.4, Speed: 837.845, Fue
 Last known data - Lat: 40.7089, Lon: -74.0106, Alt: 10268.7, Speed: 836.637, Fuel: 99.5
 2025-04-06 17:41:03 - Receive error from aircraft Aircraft-8481. Possibly lost message: 
 Last known data - Lat: 40.7087, Lon: -73.9863, Alt: 10771.3, Speed: 773.346, Fuel: 99.5
+2025-04-06 17:52:15 - Receive error from aircraft Aircraft-1407. Possibly lost message: 
+Last known data - Lat: 40.7227, Lon: -74.0008, Alt: 10262.1, Speed: 836.783, Fuel: 98

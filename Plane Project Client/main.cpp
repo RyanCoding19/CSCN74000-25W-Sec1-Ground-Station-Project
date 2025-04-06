@@ -97,9 +97,9 @@ namespace MainClient {
         while (g_keepRunning)
         {
             // Clear buffer before receiving new data
-            (void)std::memset(buffer, 0, BUFFER_SIZE);
+            (void)std::memset(&buffer[0], 0, BUFFER_SIZE);
 
-            int bytesReceived = recv(socket, buffer, BUFFER_SIZE - 1, 0);
+            int bytesReceived = recv(socket, &buffer[0], BUFFER_SIZE - 1, 0);
             if (bytesReceived > 0) {
                 buffer[bytesReceived] = '\0';   // Null-terminate the received data
 
