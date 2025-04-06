@@ -1,0 +1,2 @@
+2025-04-06 16:17:07 - Receive error from aircraft Aircraft-2574. Possibly lost message: 
+Last known data - Lat: 40.7244, Lon: -73.9949, Alt: 10477.2, Speed: 831.773, Fuel: 97

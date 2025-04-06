@@ -9,6 +9,10 @@
 #include <atomic>
 #include <cstdlib>
 #include <future>
+#include <fstream>
+#include <sstream>
+#include <iomanip>
+
 
 constexpr uint16_t PORT = 8080;
 constexpr const char* SERVER_IP = "127.0.0.1";
@@ -29,6 +33,21 @@ enum class ErrorCode {
     SEND_FAILED,
     RECEIVE_FAILED
 };
+
+// Utility function to write to general error/communication log
+void writeToLogFile(const std::string& filename, const std::string& message) {
+    std::ofstream outFile(filename, std::ios::app);
+    if (outFile.is_open()) {
+        auto now = std::chrono::system_clock::now();
+        auto now_c = std::chrono::system_clock::to_time_t(now);
+        std::tm now_tm;
+        localtime_s(&now_tm, &now_c);
+
+        std::ostringstream oss;
+        oss << std::put_time(&now_tm, "%Y-%m-%d %H:%M:%S") << " - " << message;
+        outFile << oss.str() << "\n";
+    }
+}
 
 // Function to send aircraft data
 void sendAircraftData(SOCKET socket, Aircraft& aircraft) {
@@ -57,11 +76,16 @@ void sendAircraftData(SOCKET socket, Aircraft& aircraft) {
 
         // Send data
         if (send(socket, message.c_str(), static_cast<int>(message.length()), 0) == SOCKET_ERROR) {
-            std::cerr << "Error sending data: " << WSAGetLastError() << std::endl;
+            std::string err = "Send failed: " + message;
+            std::cerr << err << std::endl;
+            writeToLogFile("error_log.txt", err);
             g_keepRunning = false;
             break;
         }
         std::cout << "Sent: " << message << std::endl;
+        writeToLogFile("communications.txt", "SENT: " + message);
+
+
 
         // Sleep between updates
         std::this_thread::sleep_for(DATA_SEND_INTERVAL);
@@ -90,14 +114,19 @@ void receiveServerMessages(SOCKET socket) {
             else {
                 std::cout << "Server: " << buffer << std::endl;
             }
+            writeToLogFile("communications.txt", "RECEIVED: " + message);
         }
         else if (bytesReceived == 0) {
-            std::cout << "Connection closed by server" << std::endl;
+            std::string msg = "Connection closed by server";
+            std::cout << msg << std::endl;
+            writeToLogFile("error_log.txt", msg);
             g_keepRunning = false;
             break;
         }
         else {
-            std::cerr << "Error receiving data: " << WSAGetLastError() << std::endl;
+            std::string msg = "Error Recieving Data";
+            std::cerr << msg << std::endl;
+            writeToLogFile("error_log.txt", msg);
             g_keepRunning = false;
             break;
         }
@@ -185,6 +214,7 @@ int main(int argc, char* argv[]) {
 
         if (connect(clientSocket, reinterpret_cast<sockaddr*>(&serverAddr), sizeof(serverAddr)) == SOCKET_ERROR) {
             std::cerr << "Connection failed with error: " << WSAGetLastError() << std::endl;
+            writeToLogFile("error_log.txt", "Connection attempt failed.");
             cleanupSocket(clientSocket);
             std::cout << "Retrying in 3 seconds..." << std::endl;
             std::this_thread::sleep_for(std::chrono::seconds(3));
@@ -208,7 +238,9 @@ int main(int argc, char* argv[]) {
             // Shutdown the socket to signal disconnection to the server
             if (clientSocket != INVALID_SOCKET) {
                 shutdown(clientSocket, SD_SEND); // Signal we're done sending
+                std::ostringstream oss;
                 std::cout << "Connection closed by client (Aircraft " << aircraft.GetAircraftID() << ")" << std::endl;
+                writeToLogFile("error_log.txt", oss.str());
             }
             });
 

@@ -39,6 +39,11 @@ namespace PlaneSystem {
             double fuel
         );
 
+        Aircraft()
+            : m_aircraftID("UNKNOWN"), m_latitude(0.0), m_longitude(0.0),
+            m_altitude(0.0), m_speed(0.0), m_fuelLevel(0.0) {
+        }
+
         // Copy constructor
         Aircraft(const Aircraft& other);
 

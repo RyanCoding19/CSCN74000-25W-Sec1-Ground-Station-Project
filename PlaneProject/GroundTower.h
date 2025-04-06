@@ -17,6 +17,9 @@
 #include <iomanip>
 #include <chrono>
 #include <unordered_map>
+#include <fstream>
+#include <sstream>
+#include <iomanip>
 
 namespace PlaneSystem {
 
@@ -163,6 +166,8 @@ namespace PlaneSystem {
          * @return True if command was sent successfully, false otherwise
          */
         bool SendCommand(const std::string& aircraftID, CommandType commandType);
+
+        void writeToLogFile(const std::string& filename, const std::string& message);
 
         /**
          * @brief Broadcast a command to all connected aircraft

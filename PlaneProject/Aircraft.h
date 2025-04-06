@@ -30,6 +30,12 @@ namespace PlaneSystem {
         * @param spd Aircraft's speed (km/h)
         * @param fuel Aircraft's fuel level (percentage)
         */
+
+        Aircraft()
+            : m_aircraftID("UNKNOWN"), m_latitude(0.0), m_longitude(0.0),
+            m_altitude(0.0), m_speed(0.0), m_fuelLevel(0.0) {
+        }
+
         Aircraft(
             const std::string& id,
             double lat,
