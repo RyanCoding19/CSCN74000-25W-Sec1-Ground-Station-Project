@@ -13,102 +13,103 @@
 #include "ServerHeader.h"
 #include "GroundTower.h" 
 
-using namespace PlaneSystem;
+namespace PlaneSystem {
 
-void handleCommandMenu(GroundTower& tower) {
+    void handleCommandMenu(GroundTower& tower) {
 
-    std::cout << "\n===== COMMAND CENTER =====\n";
-    std::cout << "1. Send Weather Alert\n";
-    std::cout << "2. Send Route Change Instruction\n";
-    std::cout << "3. Send Altitude Change Instruction\n";
-    std::cout << "4. Send Emergency Broadcast\n";
-    std::cout << "5. Request System Diagnostic\n";
-    std::cout << "0. Return to Main Menu\n";
-    std::cout << "Enter choice: ";
+        std::cout << "\n===== COMMAND CENTER =====\n";
+        std::cout << "1. Send Weather Alert\n";
+        std::cout << "2. Send Route Change Instruction\n";
+        std::cout << "3. Send Altitude Change Instruction\n";
+        std::cout << "4. Send Emergency Broadcast\n";
+        std::cout << "5. Request System Diagnostic\n";
+        std::cout << "0. Return to Main Menu\n";
+        std::cout << "Enter choice: ";
 
-    int choice;
-    std::cin >> choice;
-    (void)std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear input buffer
+        int choice;
+        std::cin >> choice;
+        (void)std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear input buffer
 
-    if (choice < 0 || choice > 6) {
-        std::cout << "Invalid option. Please try again.\n";
-        return;
-    }
+        if (choice < 0 || choice > 6) {
+            std::cout << "Invalid option. Please try again.\n";
+            return;
+        }
 
-    if (choice == 0) {
-        return;
-    }
+        if (choice == 0) {
+            return;
+        }
 
-    // Common variable for command handling
-    std::string aircraftID;
-    bool isBroadcast = false;
-    bool success = false;
-    int cmdSent = 0;
-    GroundTower::CommandType cmdType;
+        // Common variable for command handling
+        std::string aircraftID;
+        bool isBroadcast = false;
+        bool success = false;
+        int cmdSent = 0;
+        GroundTower::CommandType cmdType;
 
-    // Set command type based on user choice
-    switch (choice) {
-    case 1: 
-        cmdType = GroundTower::CommandType::WEATHER_ALERT;
-        break;
-    case 2: 
-        cmdType = GroundTower::CommandType::ROUTE_CHANGE; 
-        break;
-    case 3: 
-        cmdType = GroundTower::CommandType::ALTITUDE_CHANGE; 
-        break;
-    case 4: 
-        cmdType = GroundTower::CommandType::EMERGENCY_BROADCAST; 
-        break;
-    case 5: 
-        cmdType = GroundTower::CommandType::SYSTEM_DIAGNOSTIC; 
-        break;
-    default: 
-        return;
-    }
+        // Set command type based on user choice
+        switch (choice) {
+        case 1:
+            cmdType = GroundTower::CommandType::WEATHER_ALERT;
+            break;
+        case 2:
+            cmdType = GroundTower::CommandType::ROUTE_CHANGE;
+            break;
+        case 3:
+            cmdType = GroundTower::CommandType::ALTITUDE_CHANGE;
+            break;
+        case 4:
+            cmdType = GroundTower::CommandType::EMERGENCY_BROADCAST;
+            break;
+        case 5:
+            cmdType = GroundTower::CommandType::SYSTEM_DIAGNOSTIC;
+            break;
+        default:
+            return;
+        }
 
-    // Ask if broadcast or specific aircraft
-    std::cout << "Send to (1) all aircraft or (2) specific aircraft? Enter choice: ";
-    int sendOption;
-    std::cin >> sendOption;
-    (void)std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        // Ask if broadcast or specific aircraft
+        std::cout << "Send to (1) all aircraft or (2) specific aircraft? Enter choice: ";
+        int sendOption;
+        std::cin >> sendOption;
+        (void)std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-    if (sendOption == 1) {
-        isBroadcast = true;
-    }
-    else if (sendOption == 2) {
-        std::cout << "Enter aircraft ID: ";
-        (void)std::getline(std::cin, aircraftID);
-    }
-    else {
-        std::cout << "Invalid option. Command canceled.\n";
-        return;
-    }
-
-    // Execute the command
-    if (isBroadcast) {
-        cmdSent = tower.BroadcastCommand(cmdType);
-        if (cmdSent > 0) {
-            std::cout << "Command successfully broadcast to " << cmdSent << " aircraft.\n";
+        if (sendOption == 1) {
+            isBroadcast = true;
+        }
+        else if (sendOption == 2) {
+            std::cout << "Enter aircraft ID: ";
+            (void)std::getline(std::cin, aircraftID);
         }
         else {
-            std::cout << "No aircraft available to receive broadcast.\n";
+            std::cout << "Invalid option. Command canceled.\n";
+            return;
         }
-    }
-    else {
-        success = tower.SendCommand(aircraftID, cmdType);
-        if (success) {
-            std::cout << "Command successfully sent to " << aircraftID << ".\n";
+
+        // Execute the command
+        if (isBroadcast) {
+            cmdSent = tower.BroadcastCommand(cmdType);
+            if (cmdSent > 0) {
+                std::cout << "Command successfully broadcast to " << cmdSent << " aircraft.\n";
+            }
+            else {
+                std::cout << "No aircraft available to receive broadcast.\n";
+            }
         }
         else {
-            std::cout << "Failed to send command. Aircraft may not be connected.\n";
+            success = tower.SendCommand(aircraftID, cmdType);
+            if (success) {
+                std::cout << "Command successfully sent to " << aircraftID << ".\n";
+            }
+            else {
+                std::cout << "Failed to send command. Aircraft may not be connected.\n";
+            }
         }
     }
+
 }
-
 int main() {
     // Create GroundTower with name, latitude, longitude, and operational radius in kilometers
-    GroundTower tower("Alpha Tower", 40.7128, -74.0060, 50.0);
+    PlaneSystem::GroundTower tower("Alpha Tower", 40.7128, -74.0060, 50.0);
 
     // Start the tower listening for aircraft
 	if (!tower.StartListening()) {
