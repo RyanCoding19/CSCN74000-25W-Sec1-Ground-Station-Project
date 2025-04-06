@@ -10,9 +10,6 @@
 #include <cstdlib>
 #include <future>
 
-
-using namespace PlaneSystem;
-
 namespace MainClient {
 
     constexpr uint16_t PORT = 8080;
@@ -34,7 +31,7 @@ namespace MainClient {
     };
 
     // Function to send aircraft data
-    void sendAircraftData(SOCKET socket, Aircraft& aircraft) {
+    void sendAircraftData(SOCKET socket, PlaneSystem::Aircraft& aircraft) {
         while (g_keepRunning) {
             // Update of aircraft state
             {
@@ -97,7 +94,7 @@ namespace MainClient {
             else if (bytesReceived == 0) {
                 std::cout << "Connection closed by server" << std::endl;
                 g_keepRunning = false;
-                break;
+                
             }
             else {
                 std::cerr << "Error receiving data: " << WSAGetLastError() << std::endl;
@@ -158,7 +155,7 @@ int main(int argc, char* argv[]) {
     std::uniform_real_distribution<> spdDist(750.0, 850.0);
 
     // Create aircraft object with safe initialization
-    Aircraft aircraft(
+    PlaneSystem::Aircraft aircraft(
         aircraftID,
         latDist(gen),
         lonDist(gen),
@@ -172,7 +169,8 @@ int main(int argc, char* argv[]) {
     std::cout << "Altitude: " << aircraft.GetAltitude() << " meters" << std::endl;
     std::cout << "Speed: " << aircraft.GetSpeed() << " km/h" << std::endl;
 
-    while (true) {
+    bool mainloop = true;
+    while (mainloop) {
         MainClient::g_keepRunning = true;
 
         // Create socket 
@@ -241,11 +239,14 @@ int main(int argc, char* argv[]) {
 
         if (reconnect != "y" && reconnect != "Y") {
             std::cout << "Exiting program." << std::endl;
-            break;
+            mainloop = false;
+           
         }
 
-        std::cout << "Reconnecting in 3 seconds..." << std::endl;
-        std::this_thread::sleep_for(std::chrono::seconds(3));
+        if (reconnect == "y" && reconnect == "Y") {
+            std::cout << "Reconnecting in 3 seconds..." << std::endl;
+            std::this_thread::sleep_for(std::chrono::seconds(3));
+        }
     }
 
     (void)WSACleanup();

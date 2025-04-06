@@ -13,26 +13,25 @@
 #include "ServerHeader.h"
 #include "GroundTower.h" 
 
-using namespace std;
 using namespace PlaneSystem;
 
 void handleCommandMenu(GroundTower& tower) {
 
-    cout << "\n===== COMMAND CENTER =====\n";
-    cout << "1. Send Weather Alert\n";
-    cout << "2. Send Route Change Instruction\n";
-    cout << "3. Send Altitude Change Instruction\n";
-    cout << "4. Send Emergency Broadcast\n";
-    cout << "5. Request System Diagnostic\n";
-    cout << "0. Return to Main Menu\n";
-    cout << "Enter choice: ";
+    std::cout << "\n===== COMMAND CENTER =====\n";
+    std::cout << "1. Send Weather Alert\n";
+    std::cout << "2. Send Route Change Instruction\n";
+    std::cout << "3. Send Altitude Change Instruction\n";
+    std::cout << "4. Send Emergency Broadcast\n";
+    std::cout << "5. Request System Diagnostic\n";
+    std::cout << "0. Return to Main Menu\n";
+    std::cout << "Enter choice: ";
 
     int choice;
-    cin >> choice;
-    (void)cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Clear input buffer
+    std::cin >> choice;
+    (void)std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear input buffer
 
     if (choice < 0 || choice > 6) {
-        cout << "Invalid option. Please try again.\n";
+        std::cout << "Invalid option. Please try again.\n";
         return;
     }
 
@@ -41,7 +40,7 @@ void handleCommandMenu(GroundTower& tower) {
     }
 
     // Common variable for command handling
-    string aircraftID;
+    std::string aircraftID;
     bool isBroadcast = false;
     bool success = false;
     int cmdSent = 0;
@@ -69,20 +68,20 @@ void handleCommandMenu(GroundTower& tower) {
     }
 
     // Ask if broadcast or specific aircraft
-    cout << "Send to (1) all aircraft or (2) specific aircraft? Enter choice: ";
+    std::cout << "Send to (1) all aircraft or (2) specific aircraft? Enter choice: ";
     int sendOption;
-    cin >> sendOption;
-    (void)cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    std::cin >> sendOption;
+    (void)std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
     if (sendOption == 1) {
         isBroadcast = true;
     }
     else if (sendOption == 2) {
-        cout << "Enter aircraft ID: ";
-        (void)getline(cin, aircraftID);
+        std::cout << "Enter aircraft ID: ";
+        (void)std::getline(std::cin, aircraftID);
     }
     else {
-        cout << "Invalid option. Command canceled.\n";
+        std::cout << "Invalid option. Command canceled.\n";
         return;
     }
 
@@ -90,19 +89,19 @@ void handleCommandMenu(GroundTower& tower) {
     if (isBroadcast) {
         cmdSent = tower.BroadcastCommand(cmdType);
         if (cmdSent > 0) {
-            cout << "Command successfully broadcast to " << cmdSent << " aircraft.\n";
+            std::cout << "Command successfully broadcast to " << cmdSent << " aircraft.\n";
         }
         else {
-            cout << "No aircraft available to receive broadcast.\n";
+            std::cout << "No aircraft available to receive broadcast.\n";
         }
     }
     else {
         success = tower.SendCommand(aircraftID, cmdType);
         if (success) {
-            cout << "Command successfully sent to " << aircraftID << ".\n";
+            std::cout << "Command successfully sent to " << aircraftID << ".\n";
         }
         else {
-            cout << "Failed to send command. Aircraft may not be connected.\n";
+            std::cout << "Failed to send command. Aircraft may not be connected.\n";
         }
     }
 }
@@ -113,19 +112,19 @@ int main() {
 
     // Start the tower listening for aircraft
 	if (!tower.StartListening()) {
-		cerr << "Failed to start listening for aircraft.\n";
+        std::cerr << "Failed to start listening for aircraft.\n";
 		return 1;
 	}
 
-    cout << "Tower is now listening for aircraft connections..." << endl;
-    cout << "Press Enter to display current aircraft status." << endl;
-    cout << "Press 'h' to display communication history." << endl;
-    cout << "Press 'c' to send commands to aircraft." << endl;
-    cout << "Enter 'q' to quit." << endl;
+    std::cout << "Tower is now listening for aircraft connections..." << std::endl;
+    std::cout << "Press Enter to display current aircraft status." << std::endl;
+    std::cout << "Press 'h' to display communication history." << std::endl;
+    std::cout << "Press 'c' to send commands to aircraft." << std::endl;
+    std::cout << "Enter 'q' to quit." << std::endl;
 
-    string input;
+    std::string input;
     while (true) {
-        (void)getline(cin, input);
+        (void)std::getline(std::cin, input);
 
         if (input == "q" || input == "Q") {
             break;  // Break the loop == exit the program
@@ -143,15 +142,15 @@ int main() {
             tower.DisplayAllAircraft();
         }
 
-        cout << "\nPress Enter to refresh aircraft status," << endl;
-        cout << "Press 'h' to display communication history," << endl;
-        cout << "Press 'c' to send commands to aircraft," << endl;
-        cout << "or 'q' to quit." << endl;
+        std::cout << "\nPress Enter to refresh aircraft status," << std::endl;
+        std::cout << "Press 'h' to display communication history," << std::endl;
+        std::cout << "Press 'c' to send commands to aircraft," << std::endl;
+        std::cout << "or 'q' to quit." << std::endl;
     }
 
     // Properly shut down the server
     tower.StopListening();
-    cout << "Tower has stopped listening. Exiting program." << endl;
+    std::cout << "Tower has stopped listening. Exiting program." << std::endl;
 
     return 0;
 }
