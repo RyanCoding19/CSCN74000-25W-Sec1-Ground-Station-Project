@@ -17,6 +17,9 @@
 #include <iomanip>
 #include <chrono>
 #include <unordered_map>
+#include <fstream>
+#include <sstream>
+#include <iomanip>
 
 namespace PlaneSystem {
 
@@ -150,6 +153,12 @@ namespace PlaneSystem {
 		* @return True if the tower is listening, false otherwise
         */
 		bool IsListening() const;
+
+
+        /**
+        * @brief function to write logs to a file used throughout program
+        */
+        void writeToLogFile(const std::string& filename, const std::string& message);
 
         /**
         * @brief Display communication history

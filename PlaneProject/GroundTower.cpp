@@ -21,7 +21,14 @@ namespace PlaneSystem {
     GroundTower::~GroundTower() {
         StopListening();
     }
-
+     //write to file for general log
+  void GroundTower::writeToLogFile(const std::string& filename, const std::string& message) {
+        std::ofstream outFile(filename, std::ios::app); // append mode
+        if (outFile.is_open()) {
+            outFile << getCurrentTimestamp() << " - " << message << "\n";
+            outFile.flush();
+        }
+    }
     // Register an aircraft
     void GroundTower::RegisterAircraft(const Aircraft& aircraft) {
         std::lock_guard<std::mutex> lock(m_aircraftMutex);
@@ -164,18 +171,20 @@ namespace PlaneSystem {
 	// it will parse the data and update the aircraft information or register
     // if it is a new aircraft 
     void GroundTower::handleAircraftCommunication(SOCKET clientSocket) {
-		const size_t bufferSize = 1024;     // Buffer size for incoming data
+        const size_t bufferSize = 1024;     // Buffer size for incoming data
         char buffer[bufferSize] = { 0 };
         std::string aircraftID;
-        
+        Aircraft lastKnownAircraft;
+
         std::string greetingMessage = " TOWER Name: " + m_towerName + " | Latitude: " + std::to_string(m_latitude) + " | Longitude: " + std::to_string(m_longitude);
         if (send(clientSocket, greetingMessage.c_str(), static_cast<int>(greetingMessage.length()), 0) == SOCKET_ERROR) {
             std::cerr << "Error sending the greetings message: " << WSAGetLastError() << "\n";
+            writeToLogFile("error_log.txt", "Greeting send error: " + std::to_string(WSAGetLastError()));
         }
 
         while (m_isListening) {
             // Clear buffer before receiving
-            (void)std::memset(buffer, 0, bufferSize);
+            std::memset(buffer, 0, bufferSize);
 
             // Receive data from aircraft
             int bytesReceived = recv(clientSocket, buffer, bufferSize - 1, 0);
@@ -188,6 +197,7 @@ namespace PlaneSystem {
                 // Parse message
                 std::string message(buffer);
                 Aircraft aircraft = parseAircraftMessage(message);
+                lastKnownAircraft = aircraft;
 
                 // Store aircraft ID if this is our first message
                 if (aircraftID.empty()) {
@@ -202,6 +212,7 @@ namespace PlaneSystem {
 
                 // Log the incoming communication
                 logCommunication(aircraft.GetAircraftID(), receivedMsg, true);
+                writeToLogFile("communications.txt", "RECEIVED from " + aircraft.GetAircraftID() + ": " + receivedMsg);
 
                 // Check if the aircraft is already registered
                 bool aircraftFound = false;
@@ -227,41 +238,64 @@ namespace PlaneSystem {
                 // Send response to the aircraft
                 std::string response = "Message received by " + m_towerName + " ground tower!";
                 if (send(clientSocket, response.c_str(), static_cast<int>(response.length()), 0) == SOCKET_ERROR) {
-                    std::cerr << "Error sending response: " << WSAGetLastError() << "\n";
+                    std::string errorMsg = "Send error to " + aircraftID + ". Message: " + response;
+                    std::cerr << errorMsg << "\n";
+                    writeToLogFile("error_log.txt", errorMsg);
                     break;
                 }
 
                 // Log the outgoing communication
                 logCommunication(aircraft.GetAircraftID(), response, false);
+                writeToLogFile("communications.txt", "SENT to " + aircraft.GetAircraftID() + ": " + response);
+
             }
             else if (bytesReceived == 0) {
-                // Connection closed by the client
-                std::cout << "Connection closed by aircraft " << aircraftID << ".\n";
-
-                // Remove from socket map
                 if (!aircraftID.empty()) {
-                    std::lock_guard<std::mutex> lock(m_aircraftMutex);
-                    (void)m_aircraftSockets.erase(aircraftID);
+                    std::ostringstream oss;
+                    oss << "Aircraft " << aircraftID << " disconnected. Last known state: "
+                        << "Lat: " << lastKnownAircraft.GetLatitude()
+                        << ", Lon: " << lastKnownAircraft.GetLongitude()
+                        << ", Alt: " << lastKnownAircraft.GetAltitude()
+                        << ", Speed: " << lastKnownAircraft.GetSpeed()
+                        << ", Fuel: " << lastKnownAircraft.GetFuelLevel();
+
+                    std::string disconnectLog = oss.str();
+                    std::cout << disconnectLog << std::endl;
+                    writeToLogFile("error_log.txt", disconnectLog);
+                }
+                else {
+                    writeToLogFile("error_log.txt", "Unknown aircraft disconnected before sending any data.");
                 }
 
+                // Remove from map
+                std::lock_guard<std::mutex> lock(m_aircraftMutex);
+                m_aircraftSockets.erase(aircraftID);
                 break;
             }
             else {
                 // Error in receiving data
-                std::cerr << "Error receiving data: " << WSAGetLastError() << "\n";
+                std::ostringstream oss;
+                oss << "Receive error from aircraft " << aircraftID << ". Possibly lost message: " << buffer;
+                oss << "\nLast known data - Lat: " << lastKnownAircraft.GetLatitude()
+                    << ", Lon: " << lastKnownAircraft.GetLongitude()
+                    << ", Alt: " << lastKnownAircraft.GetAltitude()
+                    << ", Speed: " << lastKnownAircraft.GetSpeed()
+                    << ", Fuel: " << lastKnownAircraft.GetFuelLevel();
 
-                // Remove from socket map
+                std::cerr << oss.str() << std::endl;
+                writeToLogFile("error_log.txt", oss.str());
+
                 if (!aircraftID.empty()) {
                     std::lock_guard<std::mutex> lock(m_aircraftMutex);
-                    (void)m_aircraftSockets.erase(aircraftID);
+                    m_aircraftSockets.erase(aircraftID);
                 }
-
                 break;
             }
         }
 
-        (void)closesocket(clientSocket);
+        closesocket(clientSocket);
     }
+
 
     // Parse a message from an aircraft
     Aircraft GroundTower::parseAircraftMessage(const std::string& message) {
