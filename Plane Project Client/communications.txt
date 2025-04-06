@@ -12,3 +12,94 @@
 2025-04-06 16:49:10 - RECEIVED: Message received by Alpha Tower ground tower!
 2025-04-06 16:49:15 - SENT: Aircraft-2853,40.702476,-73.993821,9660.778787,813.874708,98.500000
 2025-04-06 16:49:15 - RECEIVED: Message received by Alpha Tower ground tower!
+2025-04-06 17:00:43 - SENT: Aircraft-9114,40.727884,-73.987273,10626.191870,799.857601,99.500000
+6000
+2025-04-06 17:00:43 - RECEIVED: Message received by Alpha Tower ground tower!
+2025-04-06 17:01:19 - RECEIVED:  TOWER Name: Alpha Tower | Latitude: 40.712800 | Longitude: -74.006000
+2025-04-06 17:01:19 - RECEIVED: Message received by Alpha Tower ground tower!
+2025-04-06 17:04:33 - SENT: Aircraft-9233,40.717402,-74.019759,9139.777633,827.069801,99.500000
+2025-04-06 17:04:33 - RECEIVED:  TOWER Name: Alpha Tower | Latitude: 40.712800 | Longitude: -74.006000
+2025-04-06 17:04:33 - RECEIVED: Message received by Alpha Tower ground tower!
+2025-04-06 17:04:38 - SENT: Aircraft-9233,40.717402,-74.019759,9139.777633,827.069801,99.000000
+2025-04-06 17:04:38 - RECEIVED: Message received by Alpha Tower ground tower!
+2025-04-06 17:04:43 - SENT: Aircraft-9233,40.717402,-74.019759,9139.777633,827.069801,98.500000
+2025-04-06 17:04:43 - RECEIVED: Message received by Alpha Tower ground tower!
+2025-04-06 17:08:33 - SENT: Aircraft-7251,40.700440,-74.001597,9410.143596,787.407353,99.500000
+06000
+2025-04-06 17:08:33 - RECEIVED: Message received by Alpha Tower ground tower!
+2025-04-06 17:09:03 - SENT: Aircraft-9485,40.723982,-73.991965,10956.429770,792.334723,99.500000
+2025-04-06 17:09:03 - RECEIVED:  TOWER Name: Alpha Tower | Latitude: 40.712800 | Longitude: -74.006000
+2025-04-06 17:09:03 - RECEIVED: Message received by Alpha Tower ground tower!
+2025-04-06 17:09:08 - SENT: Aircraft-9485,40.723982,-73.991965,10956.429770,792.334723,99.000000
+2025-04-06 17:09:08 - RECEIVED: Message received by Alpha Tower ground tower!
+2025-04-06 17:09:13 - SENT: Aircraft-9485,40.723982,-73.991965,10956.429770,792.334723,98.500000
+2025-04-06 17:09:13 - RECEIVED: Message received by Alpha Tower ground tower!
+2025-04-06 17:09:18 - SENT: Aircraft-9485,40.723982,-73.991965,10956.429770,792.334723,98.000000
+2025-04-06 17:09:18 - RECEIVED: Message received by Alpha Tower ground tower!
+2025-04-06 17:09:23 - SENT: Aircraft-9485,40.723982,-73.991965,10956.429770,792.334723,97.500000
+2025-04-06 17:09:23 - RECEIVED: Message received by Alpha Tower ground tower!
+2025-04-06 17:09:25 - RECEIVED: CMD:[WEATHER ALERT] 2025-04-06 17:09:25 - Severe weather conditions ahead. Prepare for turbulence and possible route changes.
+2025-04-06 17:09:28 - SENT: Aircraft-9485,40.723982,-73.991965,10956.429770,792.334723,97.000000
+2025-04-06 17:09:28 - RECEIVED: Message received by Alpha Tower ground tower!
+2025-04-06 17:09:30 - RECEIVED: CMD:[ROUTE CHANGE] 2025-04-06 17:09:30 - Please prepare for route adjustment. New navigation coordinates will follow.
+2025-04-06 17:09:33 - SENT: Aircraft-9485,40.723982,-73.991965,10956.429770,792.334723,96.500000
+2025-04-06 17:09:33 - RECEIVED: Message received by Alpha Tower ground tower!
+2025-04-06 17:12:29 - RECEIVED:  TOWER Name: Alpha Tower | Latitude: 40.712800 | Longitude: -74.006000
+2025-04-06 17:12:29 - RECEIVED: Message received by Alpha Tower ground tower!
+2025-04-06 17:12:34 - SENT: Aircraft-9938,40.721656,-73.992216,9841.974795,773.752534,99.000000
+2025-04-06 17:12:34 - RECEIVED: Message received by Alpha Tower ground tower!
+2025-04-06 17:12:39 - SENT: Aircraft-9938,40.721656,-73.992216,9841.974795,773.752534,98.500000
+2025-04-06 17:12:39 - RECEIVED: Message received by Alpha Tower ground tower!
+2025-04-06 17:12:44 - SENT: Aircraft-9938,40.721656,-73.992216,9841.974795,773.752534,98.000000
+2025-04-06 17:12:44 - RECEIVED: Message received by Alpha Tower ground tower!
+2025-04-06 17:12:49 - SENT: Aircraft-9938,40.721656,-73.992216,9841.974795,773.752534,97.500000
+2025-04-06 17:12:49 - RECEIVED: Message received by Alpha Tower ground tower!
+2025-04-06 17:12:53 - RECEIVED: CMD:[WEATHER ALERT] 2025-04-06 17:12:53 - Severe weather conditions ahead. Prepare for turbulence and possible route changes.
+2025-04-06 17:12:54 - SENT: Aircraft-9938,40.721656,-73.992216,9841.974795,773.752534,97.000000
+2025-04-06 17:12:54 - RECEIVED: Message received by Alpha Tower ground tower!
+2025-04-06 17:12:59 - SENT: Aircraft-9938,40.721656,-73.992216,9841.974795,773.752534,96.500000
+2025-04-06 17:12:59 - RECEIVED: Message received by Alpha Tower ground tower!
+2025-04-06 17:15:49 - RECEIVED:  TOWER Name: Alpha Tower | Latitude: 40.712800 | Longitude: -74.006000
+2025-04-06 17:15:49 - RECEIVED: Message received by Alpha Tower ground tower!
+2025-04-06 17:15:54 - SENT: Aircraft-7727,40.728831,-73.995758,9055.094999,760.494628,99.000000
+2025-04-06 17:15:54 - RECEIVED: Message received by Alpha Tower ground tower!
+2025-04-06 17:15:59 - SENT: Aircraft-7727,40.728831,-73.995758,9055.094999,760.494628,98.500000
+2025-04-06 17:15:59 - RECEIVED: Message received by Alpha Tower ground tower!
+2025-04-06 17:16:02 - RECEIVED: CMD:[WEATHER ALERT] 2025-04-06 17:16:02 - Severe weather conditions ahead. Prepare for turbulence and possible route changes.
+2025-04-06 17:16:04 - SENT: Aircraft-7727,40.728831,-73.995758,9055.094999,760.494628,98.000000
+2025-04-06 17:16:04 - RECEIVED: Message received by Alpha Tower ground tower!
+2025-04-06 17:22:02 - SENT: Aircraft-4840,40.711269,-74.017958,10915.118854,781.704069,99.500000
+6000
+2025-04-06 17:22:02 - RECEIVED: Message received by Alpha Tower ground tower!
+2025-04-06 17:22:12 - SENT: Aircraft-4483,40.701565,-74.005845,10091.623967,842.971685,99.500000
+6000
+2025-04-06 17:22:12 - RECEIVED: Message received by Alpha Tower ground tower!
+2025-04-06 17:22:17 - SENT: Aircraft-4483,40.701565,-74.005845,10091.623967,842.971685,99.000000
+2025-04-06 17:22:17 - RECEIVED: Message received by Alpha Tower ground tower!
+2025-04-06 17:22:18 - RECEIVED: CMD:[WEATHER ALERT] 2025-04-06 17:22:18 - Severe weather conditions ahead. Prepare for turbulence and possible route changes.
+2025-04-06 17:25:52 - SENT: Aircraft-2582,40.709295,-74.014330,10716.423393,837.845454,99.500000
+6000
+2025-04-06 17:25:52 - RECEIVED: Message received by Alpha Tower ground tower!
+2025-04-06 17:31:26 - RECEIVED:  TOWER Name: Alpha Tower | Latitude: 40.712800 | Longitude: -74.006000
+2025-04-06 17:31:26 - RECEIVED: Message received by Alpha Tower ground tower!
+2025-04-06 17:31:31 - SENT: Aircraft-4012,40.728044,-73.980700,9736.159808,777.939955,99.000000
+2025-04-06 17:31:31 - RECEIVED: Message received by Alpha Tower ground tower!
+2025-04-06 17:31:36 - SENT: Aircraft-4012,40.728044,-73.980700,9736.159808,777.939955,98.500000
+2025-04-06 17:31:36 - RECEIVED: Message received by Alpha Tower ground tower!
+2025-04-06 17:31:38 - RECEIVED: CMD:[WEATHER ALERT] 2025-04-06 17:31:38 - Severe weather conditions ahead. Prepare for turbulence and possible route changes.
+2025-04-06 17:31:41 - SENT: Aircraft-4012,40.728044,-73.980700,9736.159808,777.939955,98.000000
+2025-04-06 17:31:41 - RECEIVED: Message received by Alpha Tower ground tower!
+2025-04-06 17:34:48 - SENT: Aircraft-7854,40.723636,-73.993405,10635.192022,838.192982,99.500000
+6000
+2025-04-06 17:34:48 - RECEIVED: Message received by Alpha Tower ground tower!
+2025-04-06 17:34:53 - SENT: Aircraft-7854,40.723636,-73.993405,10635.192022,838.192982,99.000000
+2025-04-06 17:34:53 - RECEIVED: Message received by Alpha Tower ground tower!
+2025-04-06 17:34:58 - SENT: Aircraft-7854,40.723636,-73.993405,10635.192022,838.192982,98.500000
+2025-04-06 17:34:58 - RECEIVED: Message received by Alpha Tower ground tower!
+2025-04-06 17:34:58 - RECEIVED: CMD:[WEATHER ALERT] 2025-04-06 17:34:58 - Severe weather conditions ahead. Prepare for turbulence and possible route changes.
+2025-04-06 17:39:47 - SENT: Aircraft-6352,40.708915,-74.010650,10268.701527,836.636653,99.500000
+6000
+2025-04-06 17:39:47 - RECEIVED: Message received by Alpha Tower ground tower!
+2025-04-06 17:41:02 - SENT: Aircraft-8481,40.708659,-73.986319,10771.318501,773.346198,99.500000
+6000
+2025-04-06 17:41:02 - RECEIVED: Message received by Alpha Tower ground tower!

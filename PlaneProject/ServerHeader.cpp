@@ -16,6 +16,6 @@ namespace PlaneSystem {
     }
 
     void CleanupSocket() {
-        WSACleanup();
+        (void)WSACleanup();
     }
 } 

@@ -12,3 +12,77 @@
 2025-04-06 16:49:10 - SENT to Aircraft-2853: Message received by Alpha Tower ground tower!
 2025-04-06 16:49:15 - RECEIVED from Aircraft-2853: Aircraft-2853,40.702476,-73.993821,9660.778787,813.874708,98.500000
 2025-04-06 16:49:15 - SENT to Aircraft-2853: Message received by Alpha Tower ground tower!
+2025-04-06 17:00:43 - RECEIVED from Aircraft-9114: Aircraft-9114,40.727884,-73.987273,10626.191870,799.857601,99.500000
+2025-04-06 17:00:43 - SENT to Aircraft-9114: Message received by Alpha Tower ground tower!
+2025-04-06 17:01:19 - RECEIVED from Aircraft-9368: Aircraft-9368,40.700968,-73.982864,9247.498922,829.756430,99.500000
+2025-04-06 17:01:19 - SENT to Aircraft-9368: Message received by Alpha Tower ground tower!
+2025-04-06 17:04:33 - RECEIVED from Aircraft-9233: Aircraft-9233,40.717402,-74.019759,9139.777633,827.069801,99.500000
+2025-04-06 17:04:33 - SENT to Aircraft-9233: Message received by Alpha Tower ground tower!
+2025-04-06 17:04:38 - RECEIVED from Aircraft-9233: Aircraft-9233,40.717402,-74.019759,9139.777633,827.069801,99.000000
+2025-04-06 17:04:38 - SENT to Aircraft-9233: Message received by Alpha Tower ground tower!
+2025-04-06 17:04:43 - RECEIVED from Aircraft-9233: Aircraft-9233,40.717402,-74.019759,9139.777633,827.069801,98.500000
+2025-04-06 17:04:43 - SENT to Aircraft-9233: Message received by Alpha Tower ground tower!
+2025-04-06 17:08:33 - RECEIVED from Aircraft-7251: Aircraft-7251,40.700440,-74.001597,9410.143596,787.407353,99.500000
+2025-04-06 17:08:33 - SENT to Aircraft-7251: Message received by Alpha Tower ground tower!
+2025-04-06 17:09:03 - RECEIVED from Aircraft-9485: Aircraft-9485,40.723982,-73.991965,10956.429770,792.334723,99.500000
+2025-04-06 17:09:03 - SENT to Aircraft-9485: Message received by Alpha Tower ground tower!
+2025-04-06 17:09:08 - RECEIVED from Aircraft-9485: Aircraft-9485,40.723982,-73.991965,10956.429770,792.334723,99.000000
+2025-04-06 17:09:08 - SENT to Aircraft-9485: Message received by Alpha Tower ground tower!
+2025-04-06 17:09:13 - RECEIVED from Aircraft-9485: Aircraft-9485,40.723982,-73.991965,10956.429770,792.334723,98.500000
+2025-04-06 17:09:13 - SENT to Aircraft-9485: Message received by Alpha Tower ground tower!
+2025-04-06 17:09:18 - RECEIVED from Aircraft-9485: Aircraft-9485,40.723982,-73.991965,10956.429770,792.334723,98.000000
+2025-04-06 17:09:18 - SENT to Aircraft-9485: Message received by Alpha Tower ground tower!
+2025-04-06 17:09:23 - RECEIVED from Aircraft-9485: Aircraft-9485,40.723982,-73.991965,10956.429770,792.334723,97.500000
+2025-04-06 17:09:23 - SENT to Aircraft-9485: Message received by Alpha Tower ground tower!
+2025-04-06 17:09:28 - RECEIVED from Aircraft-9485: Aircraft-9485,40.723982,-73.991965,10956.429770,792.334723,97.000000
+2025-04-06 17:09:28 - SENT to Aircraft-9485: Message received by Alpha Tower ground tower!
+2025-04-06 17:09:33 - RECEIVED from Aircraft-9485: Aircraft-9485,40.723982,-73.991965,10956.429770,792.334723,96.500000
+2025-04-06 17:09:33 - SENT to Aircraft-9485: Message received by Alpha Tower ground tower!
+2025-04-06 17:12:29 - RECEIVED from Aircraft-9938: Aircraft-9938,40.721656,-73.992216,9841.974795,773.752534,99.500000
+2025-04-06 17:12:29 - SENT to Aircraft-9938: Message received by Alpha Tower ground tower!
+2025-04-06 17:12:34 - RECEIVED from Aircraft-9938: Aircraft-9938,40.721656,-73.992216,9841.974795,773.752534,99.000000
+2025-04-06 17:12:34 - SENT to Aircraft-9938: Message received by Alpha Tower ground tower!
+2025-04-06 17:12:39 - RECEIVED from Aircraft-9938: Aircraft-9938,40.721656,-73.992216,9841.974795,773.752534,98.500000
+2025-04-06 17:12:39 - SENT to Aircraft-9938: Message received by Alpha Tower ground tower!
+2025-04-06 17:12:44 - RECEIVED from Aircraft-9938: Aircraft-9938,40.721656,-73.992216,9841.974795,773.752534,98.000000
+2025-04-06 17:12:44 - SENT to Aircraft-9938: Message received by Alpha Tower ground tower!
+2025-04-06 17:12:49 - RECEIVED from Aircraft-9938: Aircraft-9938,40.721656,-73.992216,9841.974795,773.752534,97.500000
+2025-04-06 17:12:49 - SENT to Aircraft-9938: Message received by Alpha Tower ground tower!
+2025-04-06 17:12:54 - RECEIVED from Aircraft-9938: Aircraft-9938,40.721656,-73.992216,9841.974795,773.752534,97.000000
+2025-04-06 17:12:54 - SENT to Aircraft-9938: Message received by Alpha Tower ground tower!
+2025-04-06 17:12:59 - RECEIVED from Aircraft-9938: Aircraft-9938,40.721656,-73.992216,9841.974795,773.752534,96.500000
+2025-04-06 17:12:59 - SENT to Aircraft-9938: Message received by Alpha Tower ground tower!
+2025-04-06 17:15:49 - RECEIVED from Aircraft-7727: Aircraft-7727,40.728831,-73.995758,9055.094999,760.494628,99.500000
+2025-04-06 17:15:49 - SENT to Aircraft-7727: Message received by Alpha Tower ground tower!
+2025-04-06 17:15:54 - RECEIVED from Aircraft-7727: Aircraft-7727,40.728831,-73.995758,9055.094999,760.494628,99.000000
+2025-04-06 17:15:54 - SENT to Aircraft-7727: Message received by Alpha Tower ground tower!
+2025-04-06 17:15:59 - RECEIVED from Aircraft-7727: Aircraft-7727,40.728831,-73.995758,9055.094999,760.494628,98.500000
+2025-04-06 17:15:59 - SENT to Aircraft-7727: Message received by Alpha Tower ground tower!
+2025-04-06 17:16:04 - RECEIVED from Aircraft-7727: Aircraft-7727,40.728831,-73.995758,9055.094999,760.494628,98.000000
+2025-04-06 17:16:04 - SENT to Aircraft-7727: Message received by Alpha Tower ground tower!
+2025-04-06 17:22:02 - RECEIVED from Aircraft-4840: Aircraft-4840,40.711269,-74.017958,10915.118854,781.704069,99.500000
+2025-04-06 17:22:02 - SENT to Aircraft-4840: Message received by Alpha Tower ground tower!
+2025-04-06 17:22:12 - RECEIVED from Aircraft-4483: Aircraft-4483,40.701565,-74.005845,10091.623967,842.971685,99.500000
+2025-04-06 17:22:12 - SENT to Aircraft-4483: Message received by Alpha Tower ground tower!
+2025-04-06 17:22:17 - RECEIVED from Aircraft-4483: Aircraft-4483,40.701565,-74.005845,10091.623967,842.971685,99.000000
+2025-04-06 17:22:17 - SENT to Aircraft-4483: Message received by Alpha Tower ground tower!
+2025-04-06 17:25:52 - RECEIVED from Aircraft-2582: Aircraft-2582,40.709295,-74.014330,10716.423393,837.845454,99.500000
+2025-04-06 17:25:52 - SENT to Aircraft-2582: Message received by Alpha Tower ground tower!
+2025-04-06 17:31:26 - RECEIVED from Aircraft-4012: Aircraft-4012,40.728044,-73.980700,9736.159808,777.939955,99.500000
+2025-04-06 17:31:26 - SENT to Aircraft-4012: Message received by Alpha Tower ground tower!
+2025-04-06 17:31:31 - RECEIVED from Aircraft-4012: Aircraft-4012,40.728044,-73.980700,9736.159808,777.939955,99.000000
+2025-04-06 17:31:31 - SENT to Aircraft-4012: Message received by Alpha Tower ground tower!
+2025-04-06 17:31:36 - RECEIVED from Aircraft-4012: Aircraft-4012,40.728044,-73.980700,9736.159808,777.939955,98.500000
+2025-04-06 17:31:36 - SENT to Aircraft-4012: Message received by Alpha Tower ground tower!
+2025-04-06 17:31:41 - RECEIVED from Aircraft-4012: Aircraft-4012,40.728044,-73.980700,9736.159808,777.939955,98.000000
+2025-04-06 17:31:41 - SENT to Aircraft-4012: Message received by Alpha Tower ground tower!
+2025-04-06 17:34:48 - RECEIVED from Aircraft-7854: Aircraft-7854,40.723636,-73.993405,10635.192022,838.192982,99.500000
+2025-04-06 17:34:48 - SENT to Aircraft-7854: Message received by Alpha Tower ground tower!
+2025-04-06 17:34:53 - RECEIVED from Aircraft-7854: Aircraft-7854,40.723636,-73.993405,10635.192022,838.192982,99.000000
+2025-04-06 17:34:53 - SENT to Aircraft-7854: Message received by Alpha Tower ground tower!
+2025-04-06 17:34:58 - RECEIVED from Aircraft-7854: Aircraft-7854,40.723636,-73.993405,10635.192022,838.192982,98.500000
+2025-04-06 17:34:58 - SENT to Aircraft-7854: Message received by Alpha Tower ground tower!
+2025-04-06 17:39:47 - RECEIVED from Aircraft-6352: Aircraft-6352,40.708915,-74.010650,10268.701527,836.636653,99.500000
+2025-04-06 17:39:47 - SENT to Aircraft-6352: Message received by Alpha Tower ground tower!
+2025-04-06 17:41:02 - RECEIVED from Aircraft-8481: Aircraft-8481,40.708659,-73.986319,10771.318501,773.346198,99.500000
+2025-04-06 17:41:02 - SENT to Aircraft-8481: Message received by Alpha Tower ground tower!

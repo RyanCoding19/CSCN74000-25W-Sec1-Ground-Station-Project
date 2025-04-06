@@ -1,0 +1,10 @@
+2025-04-06 17:01:20 - Receive error from aircraft Aircraft-9368. Possibly lost message: 
+Last known data - Lat: 40.701, Lon: -73.9829, Alt: 9247.5, Speed: 829.756, Fuel: 99.5
+2025-04-06 17:04:44 - Aircraft Aircraft-9233 disconnected. Last known state: Lat: 40.7174, Lon: -74.0198, Alt: 9139.78, Speed: 827.07, Fuel: 98.5
+2025-04-06 17:09:35 - Aircraft Aircraft-9485 disconnected. Last known state: Lat: 40.724, Lon: -73.992, Alt: 10956.4, Speed: 792.335, Fuel: 96.5
+2025-04-06 17:25:53 - Receive error from aircraft Aircraft-2582. Possibly lost message: 
+Last known data - Lat: 40.7093, Lon: -74.0143, Alt: 10716.4, Speed: 837.845, Fuel: 99.5
+2025-04-06 17:39:49 - Receive error from aircraft Aircraft-6352. Possibly lost message: 
+Last known data - Lat: 40.7089, Lon: -74.0106, Alt: 10268.7, Speed: 836.637, Fuel: 99.5
+2025-04-06 17:41:03 - Receive error from aircraft Aircraft-8481. Possibly lost message: 
+Last known data - Lat: 40.7087, Lon: -73.9863, Alt: 10771.3, Speed: 773.346, Fuel: 99.5

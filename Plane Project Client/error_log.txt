@@ -1,2 +1,14 @@
 2025-04-06 16:47:50 - Error Recieving Data
 2025-04-06 16:49:17 - Error Recieving Data
+2025-04-06 17:00:45 - Error Recieving Data
+2025-04-06 17:04:44 - 
+2025-04-06 17:04:44 - Connection closed by server
+2025-04-06 17:08:34 - Error Recieving Data
+2025-04-06 17:09:35 - 
+2025-04-06 17:09:35 - Connection closed by server
+2025-04-06 17:13:04 - Error Recieving Data
+2025-04-06 17:16:07 - Error Recieving Data
+2025-04-06 17:22:03 - Error Recieving Data
+2025-04-06 17:22:20 - Error Recieving Data
+2025-04-06 17:31:43 - Error Recieving Data
+2025-04-06 17:35:00 - Error Recieving Data

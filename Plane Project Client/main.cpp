@@ -40,10 +40,11 @@ namespace MainClient {
             auto now = std::chrono::system_clock::now();
             auto now_c = std::chrono::system_clock::to_time_t(now);
             std::tm now_tm;
-            localtime_s(&now_tm, &now_c);
+            (void)localtime_s(&now_tm, &now_c);
 
             std::ostringstream oss;
-            oss << std::put_time(&now_tm, "%Y-%m-%d %H:%M:%S") << " - " << message;
+            std::string timeFormat = "%Y-%m-%d %H:%M:%S";
+            oss << std::put_time(&now_tm, timeFormat.c_str()) << " - " << message;
             outFile << oss.str() << "\n";
         }
     }
@@ -102,7 +103,7 @@ namespace MainClient {
             if (bytesReceived > 0) {
                 buffer[bytesReceived] = '\0';   // Null-terminate the received data
 
-                std::string message(buffer);
+                std::string message(buffer, bytesReceived);
                 // Check if this is a command message (starts with CMD:)
                 if (message.substr(0, 4) == "CMD:") {
                     std::cout << "\n=== GROUND CONTROL COMMAND ===\n";
@@ -119,7 +120,6 @@ namespace MainClient {
                 std::cout << msg << std::endl;
                 writeToLogFile("error_log.txt", msg);
                 g_keepRunning = false;
-                break;
             }
             else {
                 std::string msg = "Error Recieving Data";
@@ -243,7 +243,7 @@ int main(int argc, char* argv[]) {
 
             // Shutdown the socket to signal disconnection to the server
             if (clientSocket != INVALID_SOCKET) {
-                shutdown(clientSocket, SD_SEND); // Signal we're done sending
+                (void)shutdown(clientSocket, SD_SEND); // Signal we're done sending
                 std::ostringstream oss;
                 std::cout << "Connection closed by client (Aircraft " << aircraft.GetAircraftID() << ")" << std::endl;
                 MainClient::writeToLogFile("error_log.txt", oss.str());
