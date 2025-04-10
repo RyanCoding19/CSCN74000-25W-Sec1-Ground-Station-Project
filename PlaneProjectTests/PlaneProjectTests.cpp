@@ -5,7 +5,6 @@
 #include "../PlaneProject/GroundTower.h"
 
 
-
 namespace PlaneProjectTests {
 
     using namespace Microsoft::VisualStudio::CppUnitTestFramework;
@@ -14,60 +13,50 @@ namespace PlaneProjectTests {
     TEST_CLASS(AircraftTests)
     {
     public:
-
+        // MISRA deviation: Justification: " _GetTestCkassInfo" and "_GetTestVersion" are framework generated and their return values aren't required
         TEST_METHOD(DefaultConstructor_SetsDefaults)
         {
-            (void)AircraftTests::__GetTestClassInfo();
-            (void)AircraftTests::__GetTestVersion();
+            char unknown[] = "UNKNOWN";
 
             Aircraft a;
 
-            Assert::AreEqual("UNKNOWN", a.GetAircraftID().c_str());
+            Assert::AreEqual(&unknown[0], a.GetAircraftID().c_str());
             Assert::AreEqual(0.0, a.GetLatitude());
             Assert::AreEqual(0.0, a.GetLongitude());
             Assert::AreEqual(0.0, a.GetAltitude());
             Assert::AreEqual(0.0, a.GetSpeed());
             Assert::AreEqual(0.0, a.GetFuelLevel());
         }
-          
+        // MISRA deviation: Justification: " _GetTestCkassInfo" and "_GetTestVersion" are framework generated and their return values aren't required 
         TEST_METHOD(ParameterizedConstructor_SetsCorrectValues)
         {
+            char unknown[] = "AC101";
 
-            (void)AircraftTests::__GetTestClassInfo();
-            (void)AircraftTests::__GetTestVersion();
+            Aircraft a(unknown, 52.4, 13.1, 10000.0, 850.0, 65.0);
 
-            Aircraft a("AC101", 52.4, 13.1, 10000.0, 850.0, 65.0);
-
-            Assert::AreEqual(std::string("AC101"), a.GetAircraftID());
+            Assert::AreEqual(&unknown[0], a.GetAircraftID().c_str());
             Assert::AreEqual(52.4, a.GetLatitude());
             Assert::AreEqual(13.1, a.GetLongitude());
             Assert::AreEqual(10000.0, a.GetAltitude());
             Assert::AreEqual(850.0, a.GetSpeed());
             Assert::AreEqual(65.0, a.GetFuelLevel());
         }
-
+        // MISRA deviation: Justification: " _GetTestCkassInfo" and "_GetTestVersion" are framework generated and their return values aren't required
         TEST_METHOD(CopyConstructor_CopiesValues)
         {
-
-            (void)AircraftTests::__GetTestClassInfo();
-            (void)AircraftTests::__GetTestVersion();
-
             Aircraft original("AC999", 40.0, -74.0, 12000.0, 900.0, 80.0);
             Aircraft copy(original);
 
-            Assert::AreEqual(original.GetAircraftID(), copy.GetAircraftID());
-            Assert::AreEqual(original.GetLatitude(), copy.GetLatitude());
-            Assert::AreEqual(original.GetLongitude(), copy.GetLongitude());
-            Assert::AreEqual(original.GetAltitude(), copy.GetAltitude());
-            Assert::AreEqual(original.GetSpeed(), copy.GetSpeed());
-            Assert::AreEqual(original.GetFuelLevel(), copy.GetFuelLevel());
+            (void)Assert::AreEqual(original.GetAircraftID(), copy.GetAircraftID());
+            (void)Assert::AreEqual(original.GetLatitude(), copy.GetLatitude());
+            (void)Assert::AreEqual(original.GetLongitude(), copy.GetLongitude());
+            (void)Assert::AreEqual(original.GetAltitude(), copy.GetAltitude());
+            (void)Assert::AreEqual(original.GetSpeed(), copy.GetSpeed());
+            (void)Assert::AreEqual(original.GetFuelLevel(), copy.GetFuelLevel());
         }
-
+        // MISRA deviation: Justification: " _GetTestCkassInfo" and "_GetTestVersion" are framework generated and their return values aren't required
         TEST_METHOD(AssignmentOperator_CopiesValues)
         {
-            (void)AircraftTests::__GetTestClassInfo();
-            (void)AircraftTests::__GetTestVersion();
-
             Aircraft a("AC1", 10.0, 20.0, 3000.0, 400.0, 90.0);
             Aircraft b;
             b = a;
@@ -79,12 +68,9 @@ namespace PlaneProjectTests {
             Assert::AreEqual(a.GetSpeed(), b.GetSpeed());
             Assert::AreEqual(a.GetFuelLevel(), b.GetFuelLevel());
         }
-
+        // MISRA deviation: Justification: " _GetTestCkassInfo" and "_GetTestVersion" are framework generated and their return values aren't required
         TEST_METHOD(Setters_UpdateFieldsCorrectly)
         {
-            (void)AircraftTests::__GetTestClassInfo();
-            (void)AircraftTests::__GetTestVersion();
-
             Aircraft a("Test", 0, 0, 0, 0, 0);
 
             a.SetLatitude(35.5);
@@ -104,12 +90,9 @@ namespace PlaneProjectTests {
     TEST_CLASS(ClientTests)
     {
     public:
-
+        // MISRA deviation: Justification: " _GetTestCkassInfo" and "_GetTestVersion" are framework generated and their return values aren't required
         TEST_METHOD(WriteToLogFile_WritesCorrectMessage)
         {
-            (void)ClientTests::__GetTestClassInfo();
-            (void)ClientTests::__GetTestVersion();
-
             const std::string filename = "test_log.txt";
             const std::string testMessage = "This is a test log entry.";
 
@@ -133,21 +116,18 @@ namespace PlaneProjectTests {
             Assert::IsTrue(found, static_cast<const wchar_t*>(L"Log message not found in file."));
         }
 
+        // MISRA deviation: Justification: " _GetTestCkassInfo" and "_GetTestVersion" are framework generated and their return values aren't required
         TEST_METHOD(GenerateAircraftID_ProducesValidFormat)
         {
-            (void)ClientTests::__GetTestClassInfo();
-            (void)ClientTests::__GetTestVersion();
+            char unknown[] = "Aircraft-";
 
             const std::string id = MainClient::generateAircraftID();
-            Assert::IsTrue(id.find("Aircraft-") == 0);
+            Assert::IsTrue(id.find(&unknown[0]) == 0);
             Assert::IsTrue(id.length() > 9U);
         }
-
+        // MISRA deviation: Justification: " _GetTestCkassInfo" and "_GetTestVersion" are framework generated and their return values aren't required
         TEST_METHOD(GenerateAircraftID_IsReasonablyUnique)
         {
-            (void)ClientTests::__GetTestClassInfo();
-            (void)ClientTests::__GetTestVersion();
-
             std::set<std::string> ids;
             const int samples = 100;
             int duplicates = 0;
@@ -165,11 +145,9 @@ namespace PlaneProjectTests {
 
             Assert::IsTrue(duplicates <= 2, static_cast<const wchar_t*>(L"Too many duplicates in generated IDs."));
         }
-
+        // MISRA deviation: Justification: " _GetTestCkassInfo" and "_GetTestVersion" are framework generated and their return values aren't required
         TEST_METHOD(CleanupSocket_ClosesSocketProperly)
         {
-            (void)ClientTests::__GetTestClassInfo();
-            (void)ClientTests::__GetTestVersion();
 
             SOCKET mockSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
             Assert::AreNotEqual(INVALID_SOCKET, mockSocket);
@@ -178,12 +156,9 @@ namespace PlaneProjectTests {
 
             Assert::AreEqual(INVALID_SOCKET, mockSocket);
         }
-
+        // MISRA deviation: Justification: " _GetTestCkassInfo" and "_GetTestVersion" are framework generated and their return values aren't required
         TEST_METHOD(SendAircraftData_DecreasesFuelLevel)
         {
-            (void)ClientTests::__GetTestClassInfo();
-            (void)ClientTests::__GetTestVersion();
-
             PlaneSystem::Aircraft testAircraft("TestAC", 0.0, 0.0, 0.0, 0.0, 5.0);
 
             {
@@ -195,13 +170,14 @@ namespace PlaneProjectTests {
 
             Assert::AreEqual(4.5, testAircraft.GetFuelLevel(), 0.01);
         }
-
+        // MISRA deviation: Justification: " _GetTestCkassInfo" and "_GetTestVersion" are framework generated and their return values aren't required
         TEST_METHOD(AircraftMessage_IsFormattedCorrectly)
         {
-            (void)ClientTests::__GetTestClassInfo();
-            (void)ClientTests::__GetTestVersion();
 
-            PlaneSystem::Aircraft a("AC999", 40.1, -73.2, 10000, 900, 85.5);
+            char unknown[] = "AC999";
+            char second[] = ".";
+
+            PlaneSystem::Aircraft a(unknown, 40.1, -73.2, 10000, 900, 85.5);
             std::string msg = a.GetAircraftID() + "," +
                 std::to_string(a.GetLatitude()) + "," +
                 std::to_string(a.GetLongitude()) + "," +
@@ -209,30 +185,24 @@ namespace PlaneProjectTests {
                 std::to_string(a.GetSpeed()) + "," +
                 std::to_string(a.GetFuelLevel());
 
-            Assert::IsTrue(msg.find("AC999") != std::string::npos);
-            Assert::IsTrue(msg.find(",") != std::string::npos);
+            Assert::IsTrue(msg.find(&unknown[0]) != std::string::npos);
+            Assert::IsTrue(msg.find(&second[0]) != std::string::npos);
         }
     };
 
     TEST_CLASS(ServerTests)
     {
     public:
-
+        // MISRA deviation: Justification: " _GetTestCkassInfo" and "_GetTestVersion" are framework generated and their return values aren't required
         TEST_METHOD(RegisterAircraft_AddsToList)
         {
-            (void)ServerTests::__GetTestClassInfo();
-            (void)ServerTests::__GetTestVersion();
-
             GroundTower tower("TestTower", 0, 0, 100);
             Aircraft a("AC001", 10, 20, 3000, 500, 60);
             tower.RegisterAircraft(a);
         }
-
+        // MISRA deviation: Justification: " _GetTestCkassInfo" and "_GetTestVersion" are framework generated and their return values aren't required
         TEST_METHOD(UpdateAircraft_UpdatesExistingAircraft)
         {
-            (void)ServerTests::__GetTestClassInfo();
-            (void)ServerTests::__GetTestVersion();
-
             GroundTower tower("TestTower", 0, 0, 100);
             Aircraft a("AC001", 10, 20, 3000, 500, 60);
             Aircraft updated("AC001", 11, 21, 3100, 510, 65);
@@ -240,12 +210,9 @@ namespace PlaneProjectTests {
             tower.RegisterAircraft(a);
             tower.UpdateAircraft(updated);
         }
-
+        // MISRA deviation: Justification: " _GetTestCkassInfo" and "_GetTestVersion" are framework generated and their return values aren't required
         TEST_METHOD(StartListening_And_StopListening)
         {
-            (void)ServerTests::__GetTestClassInfo();
-            (void)ServerTests::__GetTestVersion();
-
             GroundTower tower("TestTower", 0.0, 0.0, 100.0);
 
             bool started = tower.StartListening();
@@ -255,34 +222,25 @@ namespace PlaneProjectTests {
             tower.StopListening();
             Assert::IsFalse(tower.IsListening(), static_cast<const wchar_t*>(L"Tower should report listening state as false after stop."));
         }
-
+        // MISRA deviation: Justification: " _GetTestCkassInfo" and "_GetTestVersion" are framework generated and their return values aren't required
         TEST_METHOD(SendCommand_InvalidAircraftID_Fails)
         {
-            (void)ServerTests::__GetTestClassInfo();
-            (void)ServerTests::__GetTestVersion();
-
             GroundTower tower("TestTower", 0.0, 0.0, 100.0);
 
             bool result = tower.SendCommand("NonexistentAC", GroundTower::CommandType::ROUTE_CHANGE);
             Assert::IsFalse(result, static_cast<const wchar_t*>(L"Sending command to invalid aircraft ID should fail."));
         }
-
+        // MISRA deviation: Justification: " _GetTestCkassInfo" and "_GetTestVersion" are framework generated and their return values aren't required
         TEST_METHOD(BroadcastCommand_NoConnectedAircraft_ReturnsZero)
         {
-            (void)ServerTests::__GetTestClassInfo();
-            (void)ServerTests::__GetTestVersion();
-
             GroundTower tower("TowerZ", 0.0, 0.0, 100.0);
 
             int broadcasted = tower.BroadcastCommand(GroundTower::CommandType::ALTITUDE_CHANGE);
             Assert::AreEqual(0, broadcasted, static_cast<const wchar_t*>(L"No aircraft connected, should return 0."));
         }
-
+        // MISRA deviation: Justification: " _GetTestCkassInfo" and "_GetTestVersion" are framework generated and their return values aren't required
         TEST_METHOD(IsListening_InitiallyFalse)
         {
-            (void)ServerTests::__GetTestClassInfo();
-            (void)ServerTests::__GetTestVersion();
-
             GroundTower tower("SilentTower", 0, 0, 100);
             Assert::IsFalse(tower.IsListening(), static_cast<const wchar_t*>(L"Tower should not be listening initially."));
         }
